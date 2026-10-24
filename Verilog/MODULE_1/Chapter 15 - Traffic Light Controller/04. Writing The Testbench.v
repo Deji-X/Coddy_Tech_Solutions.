@@ -93,6 +93,23 @@ module testbench;
     clk = 0;
     reset = 0;
 
+    // Apply reset for 2 time units
+        reset = 1;
+        #2;
+        reset = 0;
+
+        // Run simulation for 100 time units
+        #100;
+
+        $display("Test complete");
+        $finish;
+    end
+
+    // Generate clock: toggle every 1 time unit
+    always #1 clk = ~clk;
+
+endmodule
+
 
     /*
     module testbench;

@@ -26,3 +26,18 @@ On reset, set count to 0
 On each rising clock edge, increment count by 1
 When count reaches 15, the next increment should wrap to 0
 */
+
+module counter (
+  input clk,
+  input reset,
+  output reg [3:0] count
+);
+
+  always @(posedge clk or posedge reset) begin
+    if (reset)
+      count <= 0;
+    else
+      count <= count + 1;
+  end
+
+endmodule

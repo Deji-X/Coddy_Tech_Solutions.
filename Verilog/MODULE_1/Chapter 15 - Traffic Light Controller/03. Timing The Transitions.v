@@ -2,10 +2,12 @@
 In this lesson, you will add the counter logic that controls how long each light stays on. The counter counts down from a preset value to zero, then triggers the next state change.
 
 Timing Requirements
-State	Duration	Counter Value
-Green	30 seconds	30
-Yellow	10 seconds	10
-Red	40 seconds	40
+State	  |Duration	  |Counter Value
+----------------------------------
+Green	  |30 seconds	|30
+Yellow	|10 seconds	|10
+Red	    |40 seconds	|40
+
 How the Counter Works
 When a state begins, the counter is loaded with the duration value
 On each clock tick, the counter decreases by 1

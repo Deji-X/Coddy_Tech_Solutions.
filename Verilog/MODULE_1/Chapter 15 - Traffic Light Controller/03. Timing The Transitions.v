@@ -24,3 +24,83 @@ Load the next state's duration into the counter
 Change to the next state
 Otherwise, decrement the counter by 1 on each clock
 */
+
+
+
+module traffic_light (
+    input clk,
+    input reset,
+    output reg red,
+    output reg yellow,
+    output reg green
+);
+
+    reg [1:0] state;
+    reg [5:0] counter;
+
+    // Output logic
+    always @(*) begin
+        case (state)
+            0: begin
+                green = 1;
+                yellow = 0;
+                red = 0;
+            end
+
+            1: begin
+                green = 0;
+                yellow = 1;
+                red = 0;
+            end
+
+            2: begin
+                green = 0;
+                yellow = 0;
+                red = 1;
+            end
+
+            default: begin
+                green = 0;
+                yellow = 0;
+                red = 0;
+            end
+        endcase
+    end
+
+    // State and counter logic
+    always @(posedge clk or posedge reset) begin
+        if (reset) begin
+            state <= 2;       // Red
+            counter <= 0;
+        end
+        else begin
+            if (counter == 0) begin
+                case (state)
+                    0: begin
+                        state <= 1;      // Green -> Yellow
+                        counter <= 10;
+                    end
+
+                    1: begin
+                        state <= 2;      // Yellow -> Red
+                        counter <= 40;
+                    end
+
+                    2: begin
+                        state <= 0;      // Red -> Green
+                        counter <= 30;
+                    end
+
+                    default: begin
+                        state <= 2;
+                        counter <= 40;
+                    end
+                endcase
+            end
+            else begin
+                counter <= counter - 1'b1;
+            end
+        end
+    end
+
+endmodule

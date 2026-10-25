@@ -56,3 +56,31 @@ WHAT TO DO:
      o When cnt == 10, reset to 0
 
    
+CHAPTER 3 - TRANSMITTER DESIGN
+In this lesson, you will complete the UART transmitter by adding the shift register to send any byte, not just the fixed letter 'A'.
+
+The shift register loads the full frame (stop bit + 8 data bits + start bit) and shifts it out one bit at a time.
+
+Frame Format
+
+Stop (1)	|Data (8 bits)	|Start (0)
+-----------------------------------
+1	     |data_in	     |0
+
+For example, if data_in = 8'b01000001 (letter 'A'), the shift register becomes: 1 01000001 0
+
+Your Task
+You are given the state machine from the previous lesson (transmits fixed byte). You need to modify it to send any byte from the data_in input.
+
+What to do:
+
+Add an input [7:0] called data_in to the port list (inside the parentheses)
+Add a 10-bit reg called shift_reg outside the parentheses (inside the module body, because it is an internal signal)
+When cnt == 0 and start == 1:
+Load shift_reg with {1'b1, data_in, 1'b0}
+When cnt is between 1 and 8:
+Send tx <= shift_reg[0]
+Shift right: shift_reg <= shift_reg >> 1
+When cnt == 9:
+Send tx <= shift_reg[0]
+Shift right: shift_reg <= shift_reg >> 1

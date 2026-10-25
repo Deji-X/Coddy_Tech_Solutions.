@@ -1,0 +1,69 @@
+Priority Encoder: Code and Explanation
+
+Original code:
+
+module dut (input [3:0] req, output reg [1:0] code, output reg valid);
+    always @* begin
+        valid = |req;
+        code = 0;
+        if (req[3]) code = 3;
+        else if (req[2]) code = 2;
+        else if (req[1]) code = 1;
+    end
+endmodule
+
+
+Explanation:
+
+1. Module declaration
+   module dut (input [3:0] req, output reg [1:0] code, output reg valid);
+
+   - req is a 4-bit input representing four request signals: req[3], req[2], req[1], and req[0].
+   - code is a 2-bit output that encodes the highest-priority active request.
+   - valid is a 1-bit output that indicates whether any request is active.
+   - req[3] has the highest priority, followed by req[2], req[1], and req[0].
+
+2. Combinational logic
+   always @* begin
+
+   This block runs whenever any signal read inside it changes. It describes combinational logic, so it does not require a clock.
+
+3. Valid signal
+   valid = |req;
+
+   The | before req is the reduction OR operator. It ORs all four bits together:
+   - If any req bit is 1, valid becomes 1.
+   - If req is 0000, valid becomes 0.
+
+4. Default code
+   code = 0;
+
+   This assigns code a default value of zero. It ensures code has a value even when none of the later conditions is true.
+
+5. Priority checks
+   if (req[3]) code = 3;
+   else if (req[2]) code = 2;
+   else if (req[1]) code = 1;
+
+   - If req[3] is 1, code becomes 3. The remaining conditions are skipped.
+   - Otherwise, if req[2] is 1, code becomes 2.
+   - Otherwise, if req[1] is 1, code becomes 1.
+   - If req[3], req[2], and req[1] are all 0, code stays 0. This covers both req[0] being active and no requests being active; valid distinguishes these cases.
+
+6. Example outputs
+
+   req    code   valid
+   0000   00     0
+   0001   00     1
+   0010   01     1
+   0100   10     1
+   1000   11     1
+   1010   11     1
+
+7. Why no latch is inferred
+
+   Both outputs are assigned on every combinational path:
+   - valid is assigned directly using valid = |req;
+   - code is assigned a default value before the conditional overrides.
+
+   Therefore, the logic does not need to retain previous output values, so no latch is inferred.

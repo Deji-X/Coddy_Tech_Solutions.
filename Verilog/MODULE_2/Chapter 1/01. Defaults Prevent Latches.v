@@ -1,4 +1,4 @@
-Defaults Prevent Latches
+/*Defaults Prevent Latches
 
 
 
@@ -51,3 +51,20 @@ end
 When en = 0, y is not assigned a new value. It must retain its previous value, which can infer a latch.
 
 Remember: for combinational logic, assign every output on every possible path. Defaults followed by conditional overrides are a simple way to achieve this.
+*/
+
+module dut (
+    input en,
+    input [7:0] a,
+    output reg [7:0] y
+);
+
+    initial y = 0;
+
+    always @(*) begin
+        y = 8'b00000000;
+        if (en)
+            y = a;
+    end
+
+endmodule

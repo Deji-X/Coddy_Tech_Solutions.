@@ -88,3 +88,15 @@ The nonzero check separates idle (zero) from an active one-hot request. The expr
 
 */
 
+
+module dut (
+  input [3:0] bits,
+  output valid
+);
+
+  assign valid  = 0;
+
+  initial
+
+
+endmodule    

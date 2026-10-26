@@ -94,9 +94,7 @@ module dut (
   output valid
 );
 
-  assign valid  = 0;
-
-  initial
+  assign valid  = (bits != 4'b0000) && ((bits & (bits - 1'b1)) == 4'b0000);
 
 
 endmodule    

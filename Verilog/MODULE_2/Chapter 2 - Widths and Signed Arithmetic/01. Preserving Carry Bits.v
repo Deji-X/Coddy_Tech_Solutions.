@@ -14,3 +14,10 @@ Each operand is explicitly nine bits wide, matching the complete sum.
 
 Choose the required result width and extend operands before arithmetic.
 */
+
+/*
+Add unsigned 8-bit a and b without losing carry. 
+
+Return the complete 9-bit sum in total. Explicitly extend both operands to nine bits.
+Output columns: total. All stimulus values are known binary values.
+*/

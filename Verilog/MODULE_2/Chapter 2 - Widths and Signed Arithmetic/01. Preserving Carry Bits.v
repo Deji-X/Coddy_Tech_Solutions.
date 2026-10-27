@@ -21,3 +21,13 @@ Add unsigned 8-bit a and b without losing carry.
 Return the complete 9-bit sum in total. Explicitly extend both operands to nine bits.
 Output columns: total. All stimulus values are known binary values.
 */
+
+module dut (
+  input [7:0] a,
+  input [7:0] b,
+  output [8:0] total
+);
+
+  assign total = a + b;
+
+endmodule

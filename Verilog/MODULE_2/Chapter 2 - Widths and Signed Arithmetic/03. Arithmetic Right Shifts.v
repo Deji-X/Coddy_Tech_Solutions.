@@ -15,3 +15,18 @@ the negative two's-complement interpretation.
 
 Use a signed left operand with >>> when sign extension is required.
 */
+
+/*
+Arithmetic-right-shift signed 8-bit value by amount (0 to 7).
+Return the signed 8-bit result y. Negative values fill with their sign bit.
+Output columns: y. All stimulus values are known binary values.
+*/
+
+module dut (
+  input signed [7:0] value,
+  input [2:0] amount,
+  output signed [7:0] y
+);
+
+  assign y = value >>> amount;
+endmodule

@@ -5,7 +5,12 @@ module testbench;
     wire signed [7:0] maximum;
     wire signed [8:0] delta;
     integer scenario;
-    dut uut (.a(a), .b(b), .maximum(maximum), .delta(delta));
+    dut uut (
+        .a(a),
+        .b(b),
+        .maximum(maximum),
+        .delta(delta)
+    );
     initial begin
         if (!$value$plusargs("CASE=%d", scenario)) scenario = 1;
         case (scenario)

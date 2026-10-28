@@ -11,6 +11,20 @@ module dut (
   output [3:0] count_b
 );
 
+  function [3:0] gort;
+    input [7:0] value;
+    integer i;
+    begin
+      gort = 4'd0;
+
+      for (i = 0; i < 8; i = i + 1) begin
+        gort = gort + value[i];
+      end
+    end
+  endfunction
+
+  assign count_a = gort(a);
+  assign count_b = gort(b);
   
   
 endmodule

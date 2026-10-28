@@ -11,7 +11,24 @@ module dut (
   output reg clipped
 );
 
-  initial y = ;
-  initial clipped = ;
+  reg signed [8:0] diff;
+
+    always @(*) begin
+        diff = {a[7], a} - {b[7], b};
+        clipped = 1'b0;
+
+        if (diff > 9'sd127) begin
+            y = 8'sd127;
+            clipped = 1'b1;
+        end
+        else if (diff < -9'sd128) begin
+            y = -8'sd128;
+            clipped = 1'b1;
+        end
+        else
+            y = diff[7:0];
+    end
+
+endmodule
 
 endmodule

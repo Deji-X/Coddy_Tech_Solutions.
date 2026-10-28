@@ -30,6 +30,6 @@ module dut #(
   output [WIDTH-1:0] y
 );
 
-  assign y = 0;
+  assign y = a + 1'b1;
 
 endmodule

@@ -5,7 +5,12 @@ module testbench;
     wire [7:0] difference;
     wire borrow;
     integer scenario;
-    dut uut (.a(a), .b(b), .difference(difference), .borrow(borrow));
+    dut uut(
+        .a(a),
+        .b(b),
+        .difference(difference),
+        .borrow(borrow)
+    );
     initial begin
         if (!$value$plusargs("CASE=%d", scenario)) scenario = 1;
         case (scenario)

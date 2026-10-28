@@ -21,6 +21,12 @@ Assign the function result on every path and keep combinational functions free o
 timing controls.
 */
 
+/*
+Implement a Verilog function gray that converts an unsigned
+8-bit binary value to Gray code using value XOR (value shifted right by one).
+Drive y by calling the function with a. Output columns: y.
+All stimulus values are known binary values.
+*/
 
 module dut (
   input [7:0] a,

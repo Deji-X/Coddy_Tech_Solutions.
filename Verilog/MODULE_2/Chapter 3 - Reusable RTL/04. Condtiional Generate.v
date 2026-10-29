@@ -25,7 +25,7 @@ Input b is unused. MODE is either 0 or 1.
 The testbench instantiates both configurations and prints y0 then y1.
 */
 
-module #(parameter MODE=0) (
+module dut #(parameter MODE=0) (
   input [7:0] a, b,
   output [7:0] y
 );

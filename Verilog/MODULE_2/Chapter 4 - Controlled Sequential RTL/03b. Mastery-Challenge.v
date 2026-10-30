@@ -16,8 +16,33 @@ module dut (
   input [7:0] a,
   input [7:0] b,
   output reg [9:0] y,
-  output reg ouy_valid
+  output reg out_valid
 );
-  
 
+  reg [8:0] acuon;
+  reg acuon_valid;
+
+  always @(posedge clk) begin
+    if (rst) begin
+      acuon       <= 9'b0;
+      acuon_valid <= 1'b0;
+      y           <= 10'b0;
+      out_valid   <= 1'b0;
+    end
+
+    else begin
+      // Stage 1
+      acuon       <= a + b;
+      acuon_valid <= in_valid;
+
+      // Stage 2
+      out_valid <= acuon_valid;
+      if (acuon_valid)
+        y <= 2 * acuon;
+      else
+        y <= 10'b0;
+    end
+
+  end
+        
 endmodule

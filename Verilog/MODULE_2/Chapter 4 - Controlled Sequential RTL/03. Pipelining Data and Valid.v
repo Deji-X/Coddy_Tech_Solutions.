@@ -22,4 +22,28 @@ Data and its validity move through the same number of registers.
 Align data and valid through every pipeline stage and flush validity on reset.
 */
 
+/*
+Implement a two-register-stage pipeline.
+On each non-reset edge, stage one captures a and in_valid.
+Stage two uses the previous stage-one values:
+out_valid becomes its old valid,
+and y becomes its old data plus one modulo 256 when valid, otherwise zero.
+Synchronous rst clears both stages and outputs. Output columns: y, out_valid.
+All controls and data are stable before each rising clock edge;
+results are observed afterward.
+*/
+
+
+module dut (
+    input clk,
+    input rst,
+    input in_valid,
+    input [7:0] a,
+    output reg [7:0] y,
+    output reg out_valid
+);
+
+    
+
+endmodule
 

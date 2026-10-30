@@ -15,3 +15,21 @@ Compare current and previous sampled levels;
 use this detector only with a synchronous input.
 */
 
+/*
+For a signal sig already synchronous to clk,
+produce a registered one-cycle pulse on each sampled 0-to-1 transition.
+Synchronous rst clears the stored previous level and pulse.
+A high sig on the first non-reset edge therefore produces a pulse.
+Output columns: pulse.
+All controls and data are stable before each rising clock edge;
+results are observed afterward.
+*/
+
+module dut (
+  input clk,
+  input rst,
+  input sig,
+  output reg pulse
+);
+
+endmodule

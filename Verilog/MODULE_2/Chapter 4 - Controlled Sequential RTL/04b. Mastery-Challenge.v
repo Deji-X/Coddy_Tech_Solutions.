@@ -16,6 +16,23 @@ module dut (
   output reg falling
 );
 
+  reg prev_sig;
+
+  always @(posedge clk) begin
+    if (rst) begin
+      prev_sig     <= 1'b0;
+      rising       <= 1'b0;
+      falling      <= 1'b0;
+    end
+
+    else begin
+      prev_sig <= sig;
+      rising <= sig & ~prev_sig;
+      falling <= ~sig & prev_sig);
+    end
+
+  end
+
   
 
 endmodule

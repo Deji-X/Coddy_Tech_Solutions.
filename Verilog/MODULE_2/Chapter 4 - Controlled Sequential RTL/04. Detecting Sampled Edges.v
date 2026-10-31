@@ -31,5 +31,18 @@ module dut (
   input sig,
   output reg pulse
 );
+  reg prev_sig;
+
+  always @(posedge clk) begin
+    if (rst) begin
+      prev_sig <= 1'b0;
+      pulse    <= 1'b0;
+    end
+
+    else begin
+      prev_sig <= sig;
+      pulse    <= sig & ~prev_sig;
+    end
+  end
 
 endmodule

@@ -12,5 +12,22 @@ module dut (
   input sig,
   output reg [3:0] count
 );
+  reg sig_prev;
+
+  always @(posedge clk) begin
+    if (rst) begin
+      count    <= 4'b0;
+      sig_prev <= 1'b0;
+    end
+
+    else begin
+      sig_prev <= sig;
+
+      if (sig && !sig_prev) begin
+        if (count < 4'd15)
+          count <= count + 1'b1;
+      end
+    end
+  end
 
 endmodule

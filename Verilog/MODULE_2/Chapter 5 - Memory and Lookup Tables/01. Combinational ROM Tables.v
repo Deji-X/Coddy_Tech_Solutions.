@@ -27,6 +27,14 @@ Every address selects a defined constant with no retained previous output.
 Specify every table entry and distinguish combinational lookup from registered read latency.
 */
 
+/*
+Implement a combinational eight-entry lookup table.
+Addresses 0 through 7 return 3,5,8,13,21,34,55,89 respectively.
+Use a complete case-based function to drive y.
+Output columns: y.
+All stimulus values are known binary values.
+*/
+
 
 module dut (
     input [2:0] addr,

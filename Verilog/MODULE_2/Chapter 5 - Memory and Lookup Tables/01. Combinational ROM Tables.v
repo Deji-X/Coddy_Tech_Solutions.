@@ -26,3 +26,12 @@ Every address selects a defined constant with no retained previous output.
 
 Specify every table entry and distinguish combinational lookup from registered read latency.
 */
+
+
+module dut (
+    input [2:0] addr,
+    output [7:0] y
+);
+
+    
+    

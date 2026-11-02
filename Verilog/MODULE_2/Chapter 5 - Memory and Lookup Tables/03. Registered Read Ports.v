@@ -56,3 +56,26 @@ module dut (
     end
 
 endmodule
+
+/*Their Solution
+
+module dut (input clk,
+input rst,
+input we,
+input re,
+input [1:0] waddr,
+input [1:0] raddr,
+input [7:0] data,
+output reg [7:0] q
+);
+    reg [7:0] mem [0:3];
+    always @(posedge clk) begin
+        if(we)
+            mem[waddr]<=data;
+        if(rst)
+            q<=0;
+        else if(re)
+            q<=mem[raddr];
+    end
+endmodule
+*/

@@ -18,3 +18,13 @@ Document read latency, disabled-read behavior and which state reset actually cle
 */
 
 
+/*
+Implement a four-word 8-bit memory with synchronous write and registered read q.
+we writes on rising edges.
+rst synchronously clears only q; otherwise re loads q from the pre-edge mem[raddr];
+re=0 holds q. Memory is not reset, and writes are independent of rst.
+If read and write share an address on one edge, q receives the old word.
+Tests initialize words before enabled reads. Output columns: q.
+All controls and data are stable before each rising clock edge;
+results are observed afterward.
+*/

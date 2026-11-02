@@ -16,3 +16,5 @@ The output register updates only on the specified edge and enabled path.
 
 Document read latency, disabled-read behavior and which state reset actually clears.
 */
+
+

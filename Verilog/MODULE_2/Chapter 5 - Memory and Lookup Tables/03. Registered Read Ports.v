@@ -28,3 +28,31 @@ Tests initialize words before enabled reads. Output columns: q.
 All controls and data are stable before each rising clock edge;
 results are observed afterward.
 */
+
+module dut (
+    input clk,
+    input rst,
+    input we,
+    input re,
+    input [1:0] waddr,
+    input [1:0] raddr,
+    input [7:0] data,
+    output reg [7:0] q
+);
+
+    reg [7:0] mem [0:3];
+
+    // Memory write operation
+    always @(posedge clk) begin
+        if (we)
+            mem[waddr] <= data;
+    end
+
+    always @(posedge clk) begin
+        if (rst)
+            q <= 8'b0;
+        else if (re)
+            q <= mem[waddr];
+    end
+
+endmodule

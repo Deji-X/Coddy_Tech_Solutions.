@@ -10,7 +10,17 @@ module testbench;
     wire [7:0] q;
     wire q_valid;
     integer scenario;
-    dut uut (.clk(clk), .rst(rst), .we(we), .re(re), .waddr(waddr), .raddr(raddr), .data(data), .q(q), .q_valid(q_valid));
+    dut uut (
+        .clk(clk),
+        .rst(rst),
+        .we(we),
+        .re(re),
+        .waddr(waddr),
+        .raddr(raddr),
+        .data(data),
+        .q(q),
+        .q_valid(q_valid)
+    );
     initial begin
         if (!$value$plusargs("CASE=%d", scenario)) scenario = 1;
         clk = 0;

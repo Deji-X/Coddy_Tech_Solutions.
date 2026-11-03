@@ -17,3 +17,13 @@ disappearing into an unknown condition.
 Use explicit four-state comparisons in simulation checkers and
 define how unknowns should be treated.
 */
+
+/*
+        CHALLENGE
+    
+This is a simulation-only checker, not synthesizable datapath logic.
+Set mismatch when actual and expected differ under four-state comparison.
+If both have the same X or Z in the same positions, they compare equal.
+The result must always be a known 0 or 1. Output columns: mismatch.
+All stimulus values are known binary values.
+*/

@@ -19,5 +19,25 @@ module dut (
   input [1:0] mask,
   output reg [7:0] q
 );
+  reg [7:0] mem [0:3];
 
+  
+  // Memory write
+  always @(posedge clk) begin
+    if (we)
+      mem[waddr] <= data;
+  end
+  
+  // Registered read with new-data forwarding
+  always @(posedge clk) begin
+    if (rst)
+      q <= 8'b0;
+    else if (re) begin
+      if (we && waddr == raddr)
+        q <= data;
+      else
+        q <= mem[raddr];
+    end
+  end
+    
 endmodule

@@ -27,3 +27,21 @@ If both have the same X or Z in the same positions, they compare equal.
 The result must always be a known 0 or 1. Output columns: mismatch.
 All stimulus values are known binary values.
 */
+
+module dut (
+        input [3:0] actual,
+        input [3:0] expected,
+        output mismatch
+);
+    // Replace this placeholder with your design.
+    function compare_mismatch;
+        input [3:0] a;
+        input [3:0] e;
+        begin
+            compare_mismatch = (a !== e);
+            end
+    endfunction
+    
+    assign mismatch = compare_mismatch(actual, expected);
+
+endmodule

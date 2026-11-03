@@ -22,7 +22,23 @@ module dut (
   output reg [7:0] qb
 );
 
-  
+  reg [7:0] mem [0:3];
 
+  
+  always @(posedge clk) begin
+    if (we)
+      mem[waddr] <= data;
+  end
+
+  always @(posedge clk) begin
+    if (rst) begin
+      qa <= 8'b0;
+      qb <= 8'b0;
+    end
+    else if (re) begin
+      qa <= mem[raddr_a];
+      qb <= mem[raddr_b];
+    end
+  end
 
 endmodule

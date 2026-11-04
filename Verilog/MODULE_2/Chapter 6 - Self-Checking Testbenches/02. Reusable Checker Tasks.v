@@ -21,8 +21,15 @@ Define task argument directions and
 reset per-call result variables before collecting failures.
 */
 
-module dut (
-  
-);
+module dut;
+    task chec_value;
+        input [7:0] actual, expected;
+        output ok;
+        begin
+            // Complete the checker task.
+            ok = (actual === expected);
+        end
+    endtask
+endmodule
 
 endmodule

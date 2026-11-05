@@ -9,7 +9,66 @@ All controls and data are stable before each rising clock edge;
 results are observed afterward.
 */
 
-module dut (input clk, input rst, input en, input bit_in, output reg hit);
-    // Replace this placeholder with your design.
-    initial hit = 0;
+module dut (
+    input clk,
+    input rst,
+    input en,
+    input bit_in,
+    output reg hit
+);
+
+    reg [1:0] state;
+
+    localparam S0 = 2'b00;
+    localparam S1 = 2'b01;
+    localparam S2 = 2'b10;
+
+    initial begin
+        state = S0;
+        hit = 0;
+    end
+
+    always @(posedge clk) begin
+        if (rst) begin
+            state <= S0;
+            hit <= 1'b0;
+        end
+        else begin
+            hit <= 1'b0;
+
+            if (en) begin
+                case (state)
+
+                    S0: begin
+                        if (bit_in)
+                            state <= S1;
+                        else
+                            state <= S0;
+                    end
+
+                    S1: begin
+                        if (bit_in)
+                            state <= S1;
+                        else
+                            state <= S2;
+                    end
+
+                    S2: begin
+                        if (bit_in) begin
+                            hit <= 1'b1;
+                            state <= S1;
+                        end
+                        else
+                            state <= S0;
+                    end
+
+                    default: begin
+                        state <= S0;
+                    end
+
+                endcase
+            end
+        end
+    end
+
 endmodule

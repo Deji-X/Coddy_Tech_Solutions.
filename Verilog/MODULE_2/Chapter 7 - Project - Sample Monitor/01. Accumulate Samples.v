@@ -20,3 +20,28 @@ The fixed testbench prints total for scenarios 1-9, total and count for scenario
 and total, count and alarm for scenarios 13-15.
 Only scenarios enabled for this step are graded.
 */ 
+
+module dut (
+    input clk, rst, en, clear
+    input [7:0] data,
+    input [15:0] limit,
+    output reg [15:0] total,
+    output reg [3:0] count,
+    output alarm
+);
+    initial begin
+        total = 0;
+        count = 0;
+    end
+
+    assign alarm = 1'b0;
+    
+    always @(posedge clk) begin
+        if (rst)
+            total = 16'b0;
+        else
+            total <= total + data;
+    end
+        
+
+endmodule

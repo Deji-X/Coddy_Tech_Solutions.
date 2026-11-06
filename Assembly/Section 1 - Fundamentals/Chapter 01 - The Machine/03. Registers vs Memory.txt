@@ -1,0 +1,43 @@
+REGISTERS VS MEMORY
+
+You have now learned about two places where data can live inside a computer:
+
+    Registers: tiny storage boxes inside the CPU
+    Memory (RAM): a giant grid of numbered slots outside the CPU
+
+But why are there two places? Why doesn't the CPU keep everything in memory?
+
+The answer is speed. Registers are extremely fast because they are inside the CPU. Memory is slower because it is outside. The CPU can access a register in a single cycle, but accessing memory takes much longer.
+
+Side-by-side comparison:
+
+Feature	                |Registers	                    |Memory (RAM)
+-------------------------------------------------------------------------
+Location	           |Inside the CPU	                |Outside the CPU
+Speed	               |Extremely fast (1 cycle)	      |Slower (many cycles)
+Number of storage    |Very few (16-32 on x86-64)      |Millions or billions
+slots	
+Size of each slot	   |8 bytes (64 bits)	              |1 byte
+How you access them	 |By name (rax, rbx, rcx...)	    |By address (1000, msg, buffer)
+Volatile?	           |Yes (disappears when power off)	|Yes (disappears when power off)
+
+The most important rule in assembly:
+  AN INSTRCUTION CAN USE AT MOST ONE MEMORY OPERAND.
+  TO COMBINE TWO VALUES THAT ARE BOTH IN MEMORY, LOAD ONE OF THEM INTO A REGISTER FIRST.
+
+
+Registers are also where you keep the values you work with,
+because every trip to memory is slow.
+
+The three-step pattern you will use constantly:
+
+Step	  |What happens	                                |Example
+----------------------------------------------------------------------
+1. LOAD	  |Copy data from memory into a register	      |mov rax, [count]
+2. WORK	  |Do something with the register	              |add rax, 5
+3. STORE	|Copy the result back to memory (if needed)	  |mov [result], rax
+
+What happens if you forget this rule?
+  IF YOU TRY TO ADD TWO NUMBERS THAT ARE BOTH IN MEMORY,
+  THE ASSEMBLER WILL GIVE YOU AN ERROR. THE CPU CANNOT DO IT.
+  YOU MUST LOAD ONE OF THEM INTO A REGISTER FIRST.

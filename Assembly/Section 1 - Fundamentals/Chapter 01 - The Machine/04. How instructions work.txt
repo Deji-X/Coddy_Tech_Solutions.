@@ -1,0 +1,72 @@
+HOW INSTRUCTIONS WORK
+
+You know that the CPU executes instructions one by one.
+But how does the CPU know which instruction to run next?
+Where are the instructions stored?
+And what does an instruction actually look like?
+
+Instructions are numbers.
+
+This is a fundamental truth about computers. Everything is a number.
+The data you work with (like the number 42) is a number.
+The address where data lives (like 1000) is a number.
+And the instructions themselves (like mov, add, cmp) are also numbers.
+
+When you write assembly code like mov rax, 5,
+the assembler converts this human-readable text into a number that the CPU understands.
+This number is called an instruction code.
+
+Where are instructions stored?
+
+Instructions are stored in memory, just like data.
+There is no separate memory for instructions. The same memory holds both:
+
+Data (numbers, characters, arrays)
+Instructions (the program itself)
+The bytes themselves do not say whether they are an instruction or data.
+The CPU treats whatever is at the memory address in the Program Counter as the next
+instruction.
+On a modern system, the operating system marks the memory that holds the program's
+instructions as executable,
+and the CPU refuses to run bytes from memory that is not marked this way,
+such as the program's data. You learned about the PC briefly in Lesson 0.1.
+Now it is time to understand exactly how it works.
+
+The Program Counter (also called the Instruction Pointer)
+is a special register inside the CPU.
+Its only job is to hold the memory address of the next instruction to execute.
+
+
+
+THE FETCH-EXECUTE CYCLE:
+The CPU repeats these three steps forever:
+
+Step	      |What happens
+------------------------------------------------------
+1. FETCH	  |Read the instruction at the address in PC
+2. EXECUTE	|Perform that instruction
+3. ADVANCE	|Move PC to the next instruction
+
+Simple example:
+If PC = 1000, the CPU:
+
+  o Fetches the instruction at address 1000
+  o Executes it
+  o Moves PC to the next address (1000 + instruction size)
+
+Then it repeats with the new PC value.
+
+
+WHAT AN INSTRUCTION LOOKS LIKE:
+
+Every instruction has two parts:
+
+Part	    |What it does	    |Example
+--------------------------------------------
+Opcode	  |What to DO	      |mov, add, cmp
+Operands	|What to do it TO	|rax, 5, [result]
+
+
+Some instructions have one operand (like inc rax to add 1).
+Some have two (like mov rax, 5).
+Some have three (like add rax, rbx, rcx in some architectures).

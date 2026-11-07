@@ -1,1 +1,52 @@
+TWO-FILE PATTERN
+Throughout this course, you will write every program using two separate files:
 
+File	    |Purpose
+--------------------------------------------------------
+data.asm	|Stores all data (strings, numbers, variables)
+main.asm	|Stores all code (instructions, logic, flow)
+
+This is not required by the assembler.
+You could put everything in one file.
+But separating code from data makes your programs cleaner, easier to read,
+and easier to debug.
+
+WHY TWO FILES?
+
+  o  Organization: Data and code have different purposes.
+     Keeping them separate helps you think clearly.
+  o  Reusability: You can use the same data.asm with different main.asm files.
+  o  Readability: You never have to scroll through long strings to find your code.
+  o  Industry practice: Real projects separate code and data
+     (though often in more complex ways).
+
+How it works:
+
+The main.asm file includes the data.asm file using the %include directive.
+This tells the assembler:
+"insert the entire contents of data.asm right here before assembling."
+
+THE TWO FILES SIDE BY SIDE:
+
+data.asm	          |main.asm
+-------------------------------------------
+section .data	      |%include "data.asm"
+(variables go here)	|section .text
+ 	                  |global _start
+ 	                  |_start:
+ 	                  |(instructions go here)
+
+
+WHAT EACH SECTION DOES:
+
+Section	      |Purpose	                                              |Which file?
+-----------------------------------------------------------------------------------
+section .data	|Holds data that exists in memory when the program runs	|data.asm
+section .text	|Holds the executable instructions (code)	              |main.asm
+global _start	|Makes the entry point visible to the linker	          |main.asm
+_start:	      |Label where program execution begins	                  |main.asm
+
+
+You do not need to memorize section .data, section .text, global _start, or _start:
+right now. We will cover each of these commands in detail in the following lessons.
+For now, just look at the big picture and understand the structure of the two files.

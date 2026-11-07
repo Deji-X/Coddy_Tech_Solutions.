@@ -1,1 +1,37 @@
+Now that you know how binary works,
+you need to learn how to convert a decimal number (like 13) into binary (1101).
 
+The method: divide by 2 repeatedly, read remainders backward.
+
+Step-by-step example: Convert 13 to binary
+
+Step	|Division	|Result	|Remainder
+------------------------------------
+1	    |13 ÷ 2	  |6	    |1
+2	    |6 ÷ 2	  |3	    |0
+3	    |3 ÷ 2	  |1	    |1
+4	    |1 ÷ 2	  |0	    |1
+Now read the remainders from bottom to top: 1101
+
+So 13 in decimal = 1101 in binary.
+
+Another example: Convert 25 to binary
+
+Step	|Division	|Result	|Remainder
+----------------------------------
+1	    |25 ÷ 2	  |12	    |1
+2	    |12 ÷ 2	  |6	    |0
+3	    |6 ÷ 2	  |3	    |0
+4	    |3 ÷ 2	  |1	    |1
+5	    |1 ÷ 2	  |0	    |1
+
+Read bottom to top: 11001
+
+So 25 in decimal = 11001 in binary.
+
+
+WHY THIS WORKS:
+
+Each time you divide by 2, you are finding the next binary digit
+(starting from the rightmost). The remainder tells you whether that digit is 0 or 1.
+You stop when the result becomes 0.

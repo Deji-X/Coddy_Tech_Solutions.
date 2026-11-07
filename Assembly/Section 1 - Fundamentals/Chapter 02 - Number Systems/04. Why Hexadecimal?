@@ -1,1 +1,66 @@
+WHY HEXADECIMAL?
+You now know that computers use binary.
+So why do assembly programmers rarely write binary directly?
 
+THE PROBLEM WITH BINARY:
+Binary numbers are very long. Look at this example:
+
+Number	|Binary
+------------------------
+255	    |11111111
+1000	  |1111101000
+65535	  |1111111111111111
+
+Writing long strings of 1s and 0s is slow, error-prone, and hard to read.
+
+THE SOLUTION: HEXADECIMAL (BASE 16).
+
+Hexadecimal (or "hex") uses 16 symbols:
+
+Digit	|  Value
+-------------
+0-9	  |  0 to 9
+A	    |  10
+B	    |  11
+C	    |  12
+D	    |  13
+E	    |  14
+F	    |  15
+
+WHY HEX IS PERFECT FOR COMPUTERS:
+
+One hex digit represents exactly 4 bits (half a byte).
+
+Bits	            |  Hex digits needed
+--------------------------------------
+4 bits (nibble)	  |  1 hex digit
+8 bits (1 byte)	  |  2 hex digits
+16 bits (2 bytes)	|  4 hex digits
+32 bits (4 bytes)	|  8 hex digits
+64 bits (8 bytes)	|  16 hex digits
+
+Same number, three ways:
+
+Decimal	|Binary	            |Hexadecimal
+-------------------------------------------
+255	    |11111111	          |FF
+1000	  |1111101000	        |3E8
+65535	  |1111111111111111	  |FFFF
+
+Notice how much shorter hex is than binary.
+
+WHERE WILL YOU SEE HEX IN ASSEMBLY:
+  o Memory addresses (like 0x7FFF or 0x402000)
+  o ASCII codes (like 0x41 for 'A', 0x0a for newline)
+  o Register values in debuggers
+  o Color values (like 0xFF0000 for red)
+
+Hex is written with a prefix:
+
+Prefix	|Example	|Meaning
+-------------------------------------------------------
+0x	    |0xFF	    |FF in hex (255 in decimal)
+$	      |$FF	    |Same thing (used in some assemblers)
+h	      |FFh    	|Same thing (older style)
+
+In this course, we use 0x prefix: 0x0a, 0x41, 0xFF.

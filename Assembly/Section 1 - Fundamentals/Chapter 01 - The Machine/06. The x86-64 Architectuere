@@ -1,1 +1,48 @@
+THE x86-64 ARCHITECTURE
 
+An architecture is the design of a CPU.
+Different CPUs have different architectures,
+just like different cars have different engine designs.
+
+In this course, you are learning x86-64:
+the architecture used by most desktop computers, laptops, and servers.
+
+Why is it called x86-64?
+
+Part	|Meaning
+-------------------------------------------------------------------
+x86	  |The family name (from Intel 8086, 80286, 80386, 80486...)
+64	  |The register size (64 bits)
+
+Other names for the same thing:
+o  x86-64
+o  x64
+o  AMD64
+o  Intel 64
+
+All mean the same architecture you are learning.
+
+WHAT DOES 64-BIT MEAN?
+o  Each register can hold 64 bits of data
+o  The CPU can process 64 bits at a time
+o  Memory addresses are 64 bits wide
+
+DIFFERENT ARCHITECTURES USE DIFFERENT REGISTER NAMES:
+
+Architecture	        |Register names
+--------------------------------------------------
+x86-64 (this course)	|rax, rbx, rcx, rdx, rsi, rdi
+ARM (phones, tablets)	|x0, x1, x2, x3...
+RISC-V (open source)	|a0, a1, a2, a3...
+
+The same instruction (put 5 into a register) looks different on each architecture:
+
+Architecture	|Code
+--------------------------
+x86-64	      |mov rax, 5
+ARM	          |mov x0, #5
+RISC-V	      |li a0, 5
+
+Important: The concepts you learn (registers, memory, instructions)
+apply to all architectures.
+Only the names and syntax change.

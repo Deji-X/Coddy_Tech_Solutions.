@@ -1,1 +1,47 @@
+Binary is the number system that computers use internally.
+While humans use decimal (base 10), computers use binary (base 2).
 
+Understanding binary is essential for Assembly programming
+because you're working directly with how the CPU stores and processes data.
+
+COMPARING DECIMAL AND BINARY
+
+Let's look at how we count in decimal vs. binary:
+Decimal  |  Binary
+---------|---------
+   0     |    0
+   1     |    1
+   2     |   10
+   3     |   11
+   4     |  100
+   5     |  101
+   6     |  110
+   7     |  111
+   8     | 1000
+   9     | 1001
+  10     | 1010
+
+Notice how binary needs more digits to represent the same number?
+That's because it only has 2 digits available instead of 10.
+
+How Binary Works: Place Values
+
+In decimal, each position represents a power of 10:
+
+Number: 3 4 5
+         ↓ ↓ ↓
+       100 10 1
+       (10²)(10¹)(10⁰)
+
+So 345 = (3 × 100) + (4 × 10) + (5 × 1) = 345
+In binary, each position represents a power of 2:
+
+Number: 1 0 1
+        ↓ ↓ ↓
+        4 2 1
+       (2²)(2¹)(2⁰)
+
+So 101 = (1 × 4) + (0 × 2) + (1 × 1) = 5 in decimal
+Understanding binary is fundamental because when you start writing Assembly code,
+you'll be working directly with how the CPU sees data -
+as binary values stored in registers and memory.

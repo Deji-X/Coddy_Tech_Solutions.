@@ -1,1 +1,21 @@
+WHY BINARY?
 
+Computers use electricity.
+But electricity is not perfect: voltage fluctuates and there is noise.
+
+If computers tried to use 10 different voltage levels (0V, 1V, 2V... 9V)
+to represent digits 0-9, they would constantly make mistakes.
+
+The solution: use only two voltage levels.
+  o  Off (0 volts) = 0
+  o  On (5V, 3.3V, or 1.8V) = 1
+  o  This is called binary. Only two symbols: 0 and 1.
+
+Basic terms:
+  o  Bit = one binary digit (0 or 1)
+  o  Byte = 8 bits
+
+Everything in a computer is binary:
+  o  The letter 'A' = 01000001
+  o  The number 42 = 00101010
+  o  An instruction like mov = some binary pattern

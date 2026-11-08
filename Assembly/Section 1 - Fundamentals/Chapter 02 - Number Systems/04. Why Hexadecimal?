@@ -5,11 +5,11 @@ So why do assembly programmers rarely write binary directly?
 THE PROBLEM WITH BINARY:
 Binary numbers are very long. Look at this example:
 
-Number	|Binary
+Number	| Binary
 ------------------------
-255	    |11111111
-1000	  |1111101000
-65535	  |1111111111111111
+255	    | 11111111
+1000	  | 1111101000
+65535	  | 1111111111111111
 
 Writing long strings of 1s and 0s is slow, error-prone, and hard to read.
 

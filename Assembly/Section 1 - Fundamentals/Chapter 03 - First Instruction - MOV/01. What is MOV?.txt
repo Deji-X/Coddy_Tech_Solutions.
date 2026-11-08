@@ -27,3 +27,17 @@ transferring data between locations - all of these require MOV.
 
 In the upcoming lessons, we'll explore the different ways you can use MOV:
 loading immediate values, copying between registers, and more.
+
+
+;code
+
+; TODO: Put the number 5 into the rax register.
+mov rax, 5
+
+; TODO: Put the number 7 into the rbx register.
+mov rbx, 7
+
+; TODO: Put the number 3 into the rcx register.
+mov rcx, 3
+
+save in .asm

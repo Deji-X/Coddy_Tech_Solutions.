@@ -1,0 +1,57 @@
+ASCII & Hex
+Computers only understand numbers. So how do they store letters like 'A', 'b', or '?'?
+
+The answer is ASCII (American Standard Code for Information Interchange).
+ASCII is a table that assigns a number to every character.
+
+How ASCII works:
+
+Character	      |  ASCII number (decimal)	|  ASCII number (hex)
+---------------------------------------------------------------
+'A'	            |  65                   	|  0x41
+'B'	            |  66	                    |  0x42
+'C'    	        |  67                    	|  0x43
+'a'	            |  97                     |  0x61
+'b'	            |  98	                    |  0x62
+'0'	            |  48	                    |  0x30
+'1'	            |  49	                    |  0x31
+' ' (space)	    |  32	                    |  0x20
+'\n' (newline)	|  10	                    |  0x0A
+'\0' (null)	    |  0	                    |  0x00
+
+Important ASCII values to memorize for assembly:
+
+Character	      |  Hex	  |  Why you need it
+---------------------------------------------------------
+'A'	            |  0x41   |  Uppercase letters start here
+'a'	            |  0x61	  |  Lowercase letters start here
+'0'	            |  0x30	  |  Digits start here
+Space	          |  0x20	  |  Separating words
+Newline (\n)	  |  0x0A	  |  Moving to next line
+Null (\0)	      |  0x00	  |  End of string marker
+Notice the pattern:
+
+Pattern	                        |  Example
+------------------------------------------------------------
+Uppercase A-Z are consecutive	  |  'A'=65, 'B'=66, 'C'=67...
+Lowercase a-z are consecutive	  |  'a'=97, 'b'=98, 'c'=99...
+Digits 0-9 are consecutive	    |  '0'=48, '1'=49, '2'=50...
+Lowercase = uppercase + 32	    |  'a' (97) = 'A' (65) + 32
+
+How a string is stored in memory:
+
+The word "Hi" with a newline is stored as:
+
+Character	|  Hex	|  Binary
+-------------------------------
+'H'	      |  0x48	|  01001000
+'i'	      |  0x69	|  01101001
+'\n'	    |  0x0A	|  00001010
+
+In assembly, you write this as: db 'Hi', 0x0A
+
+WHY YOU NEED THIS FOR ASSEMBLY:
+
+When you define a string in data.asm, you are storing ASCII codes in memory.
+When you print a string,
+the operating system reads those ASCII codes and displays the matching characters.

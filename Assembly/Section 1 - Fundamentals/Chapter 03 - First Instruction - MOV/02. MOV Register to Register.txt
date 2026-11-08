@@ -1,1 +1,37 @@
+MOV REGISTER TO REGISTER
 
+Now that you know how to put a number directly into a register (MOV immediate), you can also copy values between registers.
+
+Syntax:
+
+mov destination_register, source_register
+The value from the source register is copied into the destination register. The source register remains unchanged.
+
+Example:
+
+mov rax, 5      ; rax = 5
+mov rbx, rax    ; rbx = 5 (copied from rax)
+After these two instructions, both rax and rbx contain 5.
+
+Important: The source register (rax) still has its value. MOV copies: it does not cut or move.
+
+Another example:
+
+mov rax, 7      ; rax = 7
+mov rcx, 3      ; rcx = 3
+mov rdx, rcx    ; rdx = 3 (copied from rcx)
+mov rbx, rax    ; rbx = 7 (copied from rax)
+After these instructions:
+
+Register	|  Value
+------------------
+rax	      |  7
+rcx	      |  3
+rdx	      |  3
+rbx	      |  7
+
+Why this matters:
+
+You can save a value by copying it to another register before changing the original
+You can reuse values without loading from memory again
+This is the foundation of most assembly operations

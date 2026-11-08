@@ -1,0 +1,67 @@
+HEX TO DECIMAL
+
+Hexadecimal (base 16) works the same way as binary and decimal:
+each position has a place value. In hex, each position is a power of 16.
+
+PLACE VALUES IN HEX:
+
+Position	|Power of 16	|Decimal value
+-----------------------------------------
+Rightmost	|16⁰	        |1
+Next	    |16¹	        |16
+Next	    |16²          |256
+Next	    |16³          |4096
+
+HEX DIGIT VALUES TO REMEMBER:
+
+Hex	|  Decimal
+----------------
+0-9	|  0-9
+A	  |  10
+B	  |  11
+C	  |  12
+D	  |  13
+E	  |  14
+F	  |  15
+
+EXAMPLE 1: Convert 0x2A to decimal
+
+Position	|Hex digit	|Place value	|Calculation
+--------------------------------------------------
+Left	    |2	        |16	          |2 × 16 = 32
+Right	    |A(10)	    |1	          |10 × 1 = 10
+--------------------------------------------------
+Total	 	 	                          |32 + 10 = 42
+--------------------------------------------------
+
+So 0x2A = 42 in decimal.
+
+EXAMPLE 2: Convert 0xFF to decimal
+
+Position	|Hex digit	|Place value	|Calculation
+--------------------------------------------------
+Left	    |F (15)	    |16	          |15 × 16 = 240
+Right	    |F (15)	    |1	          |15 × 1 = 15
+---------------------------------------------------
+Total	 	 	                          |240 + 15 = 255
+---------------------------------------------------
+So 0xFF = 255 in decimal.
+
+EXAMPLE 3: Convert 0x3E8 to decimal
+
+Position	|Hex digit	|Place value	|Calculation
+---------------------------------------------------------
+Left	    |3	        |256	        |3 × 256 = 768
+Middle	  |E (14)	    |16	          |14 × 16 = 224
+Right	    |8	        |1	          |8 × 1 = 8
+---------------------------------------------------------
+Total	 	 	                          |768 + 224 + 8 = 1000
+---------------------------------------------------------
+
+So 0x3E8 = 1000 in decimal.
+
+The formula:
+
+For a hex number with digits ... d₂ d₁ d₀:
+
+Value = (... + d₂ × 16² + d₁ × 16¹ + d₀ × 16⁰)

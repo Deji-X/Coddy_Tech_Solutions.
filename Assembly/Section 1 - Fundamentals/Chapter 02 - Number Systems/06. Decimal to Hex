@@ -1,0 +1,49 @@
+Converting decimal to hexadecimal is similar to converting decimal to binary,
+but instead of dividing by 2, you divide by 16.
+
+The method: divide by 16 repeatedly, read remainders backward.
+
+STEP-BY-STEP: Convert 42 to hex
+
+Step	|  Division	|  Result	|  Remainder
+-----------------------------------------------------
+1	    |  42 ÷ 16	|  2	    |  10 (which is A in hex)
+2	    |  2 ÷ 16  	|  0	    |  2
+
+Read remainders from bottom to top: 2A
+
+So 42 in decimal = 0x2A.
+
+EXAMPLE 2: Convert 255 to hex
+
+Step	|  Division	|  Result	|  Remainder
+-----------------------------------------------------
+1	    |  255 ÷ 16	|  15	    |  15 (which is F in hex)
+2	    |  15 ÷ 16	|  0	    |  15 (F)
+Read bottom to top: FF
+
+So 255 in decimal = 0xFF.
+
+EXAMPLE 3: Convert 1000 to hex
+
+Step	|  Division	  |  Result	|  Remainder
+-------------------------------------------------------
+1	    |  1000 ÷ 16	|  62	    |  8
+2	    |  62 ÷ 16	  |  3	    |  14 (which is E in hex)
+3	    |  3 ÷ 16    	|  0	    |  3
+
+Read bottom to top: 3E8
+
+So 1000 in decimal = 0x3E8.
+
+Remainder reminder:
+
+Remainder (0-15)	|  Hex digit
+------------------------------
+0-9	              |  0-9
+10	              |  A
+11	              |  B
+12	              |  C
+13	              |  D
+14	              |  E
+15	              |  F

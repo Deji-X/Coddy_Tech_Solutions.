@@ -4,6 +4,7 @@
 ;Start from small numbers and reach each value with add or sub
 ;Every value must stay a single digit
 
+;solution.asm
 ; Build 9 in rax without writing 9
 
 ; Build 4 in rbx without writing 4

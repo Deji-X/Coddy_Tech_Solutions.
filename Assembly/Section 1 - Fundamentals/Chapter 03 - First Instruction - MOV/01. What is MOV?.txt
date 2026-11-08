@@ -1,0 +1,29 @@
+What is MOV?
+
+The MOV instruction is the most fundamental and
+frequently used instruction in assembly language.
+Its name stands for "move," and it copies data from one location to another.
+
+Basic Syntax
+
+The MOV instruction follows this pattern:
+
+mov destination, source
+The value from the source is copied into the destination.
+Despite the name "move," it actually copies the data. The original source is unchanged.
+
+A Simple Example
+
+mov rax, 60
+This instruction copies the value 60 into the rax register.
+After execution, rax contains 60. The number 60 is not "used up" or deleted.
+It is just a number.
+
+Why MOV Matters
+
+Almost everything you do in assembly involves moving data around.
+Setting up registers for system calls, storing values,
+transferring data between locations - all of these require MOV. 
+
+In the upcoming lessons, we'll explore the different ways you can use MOV:
+loading immediate values, copying between registers, and more.

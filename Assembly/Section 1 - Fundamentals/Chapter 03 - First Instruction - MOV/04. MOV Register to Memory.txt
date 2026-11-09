@@ -1,1 +1,44 @@
+MOV Register to Memory
 
+
+
+Now that you know how to load data from memory into a register, you will learn the reverse: storing data from a register into memory.
+
+Syntax:
+
+mov [address], register
+The brackets [ ] mean: "store the value from the register into this memory address."
+
+Think of it like this:
+
+Imagine at memory address destination there is an empty box. You have a value sitting in a register (for example, al contains the number 7).
+
+When you write:
+
+mov [destination], al
+You are telling the CPU: "Take the value from the al register (7) and put it into the box called destination."
+
+After this instruction is executed, the memory address destination now contains the value 7. The value in al stays there. It is not removed.
+
+Example:
+
+mov al, 7            ; Put 7 into al register
+mov [destination], al ; Store the value from al into memory address "destination"
+Note: In this exercise, the data in memory is 1 byte (8 bits). That is why we use al. It is the 8-bit register that matches the size. You will learn more about register sizes later.
+
+Important rules:
+
+Rule	                                    |  Explanation
+---------------------------------------------------------------------------
+The brackets are required	                |  mov destination, al would be wrong
+The destination must be a memory address	|  Use a label like [destination]
+Size must match	                          |  For this exercise, use al (8 bits)
+
+Common mistake:
+
+; Wrong: missing brackets
+mov destination, al
+
+; Correct: stores the value into memory
+mov [destination], al
+In the challenge below, the memory address destination is already created for you. You will learn how to create your own data in Chapter 3. For now, just focus on the MOV instruction.

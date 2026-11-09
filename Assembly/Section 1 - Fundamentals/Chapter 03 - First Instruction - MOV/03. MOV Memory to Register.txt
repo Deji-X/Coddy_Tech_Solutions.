@@ -1,0 +1,37 @@
+MOV Memory to Register
+
+
+
+So far, you have moved numbers directly into registers (immediate) and copied values between registers. Now you will learn how to load data from memory into a register.
+
+Why this matters:
+
+Remember from Chapter 0: an instruction can use at most one memory operand, and registers are much faster than memory, so you load the values you work with into registers. This is how you do it.
+
+Syntax:
+
+mov register, [address]
+The brackets [ ] mean: "go to this memory address and get the value stored there."
+
+Think of it like this:
+
+Imagine at memory address number there is a box. Inside that box is a value, for example the number 5. When you write:
+
+mov al, [number]    ; Load the value from memory address "number" into al
+You are telling the CPU: "Go to the box called number, take whatever value is inside (in this case 5), and copy it into the al register."
+
+After this instruction is executed, the value 5 is now stored in al. The original value inside the box at address number stays there. It is not removed.
+
+Important rules:
+
+Rule	Explanation
+The source must be a memory address	[label] or [address]
+The brackets are required	Without brackets, myNumber is the address, not the value
+Size must match	If memory stores a byte, use al (not rax)
+Common mistake:
+
+; Wrong: without brackets, myNumber is the ADDRESS, not the value
+mov al, myNumber
+
+; Correct: loads the VALUE stored at myNumber
+mov al, [myNumber]

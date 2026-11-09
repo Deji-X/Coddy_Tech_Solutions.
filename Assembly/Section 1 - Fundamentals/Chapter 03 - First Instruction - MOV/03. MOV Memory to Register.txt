@@ -24,10 +24,12 @@ After this instruction is executed, the value 5 is now stored in al. The origina
 
 Important rules:
 
-Rule	Explanation
-The source must be a memory address	[label] or [address]
-The brackets are required	Without brackets, myNumber is the address, not the value
-Size must match	If memory stores a byte, use al (not rax)
+Rule	                                  |  Explanation
+------------------------------------------------------------------------------------
+The source must be a memory address	    |  [label] or [address]
+The brackets are required	              |  Without brackets, myNumber is the address,                                             not the value
+Size must match	                        |  If memory stores a byte, use al (not rax)
+
 Common mistake:
 
 ; Wrong: without brackets, myNumber is the ADDRESS, not the value

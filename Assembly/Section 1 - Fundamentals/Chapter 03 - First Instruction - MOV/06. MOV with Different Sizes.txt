@@ -1,1 +1,50 @@
+MOV with Different Sizes
 
+
+
+You have already used al (8 bits) and rax (64 bits). But there are other sizes too. Different registers hold different amounts of data.
+
+The x86-64 register families:
+
+Register	Size	Bits	When to use
+rax	8 bytes	64 bits	Full numbers, addresses, syscall numbers
+eax	4 bytes	32 bits	Lower half of rax
+ax	2 bytes	16 bits	Lower half of eax
+al	1 byte	8 bits	Lower half of ax (bits 0-7)
+ah	1 byte	8 bits	Upper half of ax (bits 8-15)
+The same pattern applies to other registers:
+
+64-bit	32-bit	16-bit	8-bit (low)
+rbx	ebx	bx	bl
+rcx	ecx	cx	cl
+rdx	edx	dx	dl
+rsi	esi	si	sil
+rdi	edi	di	dil
+Why size matters:
+
+When you move data, the source and destination sizes should match. If they do not match, the CPU may:
+
+Only copy part of the data
+Copy extra bytes from unknown memory
+Cause an error
+Examples of matching sizes:
+
+mov rax, 1000        ; 64-bit to 64-bit (fine)
+mov eax, 1000        ; 32-bit to 32-bit (fine)
+mov ax, 1000         ; 16-bit to 16-bit (fine)
+mov al, 5            ; 8-bit to 8-bit (fine)
+What happens with mismatched sizes:
+
+mov rax, 0x123456789ABC   ; 64-bit value
+mov al, 0xFF              ; al gets 0xFF, rax's other bits remain unchanged
+Writing to an 8-bit or 16-bit register (al, ah, ax) changes only those bits, and the rest of the full register stays the same. Writing to a 32-bit register is different: mov eax, 0xFF clears bits 32-63, so rax becomes 0xFF. This can cause unexpected results.
+
+The safe rule:
+
+In this course so far, all data in memory is 1 byte. That is why you use al (not rax).
+
+When you move data, the register size must match the memory size:
+
+1 byte of memory → use al, bl, cl, etc.
+8 bytes of memory → use rax, rbx, rcx, etc.
+You will learn about different memory sizes in Chapter 3.

@@ -1,1 +1,39 @@
+LEA - Load Address
 
+
+
+So far, you have used mov to load values from memory into registers. But sometimes you do not want the value. You want the address itself.
+
+LEA stands for Load Effective Address. It calculates a memory address and puts that address into a register, without going to memory.
+
+SYNTAX:
+lea register, [address]
+
+MOV vs LEA:
+
+Instruction	      |  What it does
+-------------------------------------------------------------------------------------
+mov al, [number]	|  Goes to memory, gets the value inside, puts it into al
+lea rsi, [number]	|  Does NOT go to memory. Calculates the address of number and puts                       it into rsi
+
+Think of it like this:
+
+  o  mov = open the box and take what is inside
+  o  lea = write down the box number (address) on a piece of paper
+
+Example:
+
+number db 42        ; The value 42 is stored at some address
+
+mov al, [number]    ; al = 42 (the value)
+lea rsi, [number]   ; rsi = address of number (e.g., 0x402000)
+Why do you need LEA?
+
+In assembly, when you want to print a string or pass a memory location to a function, you need the address, not the value. The write syscall (which you will learn in Chapter 5) expects an address in rsi.
+
+What LEA can do (beyond simple addresses):
+
+LEA can also do basic math with addresses. For example:
+
+lea rsi, [number + 5]   ; rsi = address of number + 5 bytes
+This is useful for working with arrays and data structures.

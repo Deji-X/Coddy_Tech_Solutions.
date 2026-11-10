@@ -4,5 +4,7 @@ section .data
 
 section .text
     ; TODO: Put the number 9 into the al register
+    mov al, 9
 
     ; TODO: Store the value from al into the memory address "destination"
+    mov [destination], al

@@ -6,20 +6,24 @@ You have already used al (8 bits) and rax (64 bits). But there are other sizes t
 
 The x86-64 register families:
 
-Register	Size	Bits	When to use
-rax	8 bytes	64 bits	Full numbers, addresses, syscall numbers
-eax	4 bytes	32 bits	Lower half of rax
-ax	2 bytes	16 bits	Lower half of eax
-al	1 byte	8 bits	Lower half of ax (bits 0-7)
-ah	1 byte	8 bits	Upper half of ax (bits 8-15)
+Register	|  Size	  |  Bits   |  When to use
+------------------------------------------------------------------------
+rax	      | 8 bytes	| 64 bits	| Full numbers, addresses, syscall numbers
+eax	      | 4 bytes	| 32 bits	| Lower half of rax
+ax	      | 2 bytes	| 16 bits	| Lower half of eax
+al	      | 1 byte	| 8 bits	| Lower half of ax (bits 0-7)
+ah	      | 1 byte	| 8 bits	| Upper half of ax (bits 8-15)
+
 The same pattern applies to other registers:
 
-64-bit	32-bit	16-bit	8-bit (low)
-rbx	ebx	bx	bl
-rcx	ecx	cx	cl
-rdx	edx	dx	dl
-rsi	esi	si	sil
-rdi	edi	di	dil
+64-bit	| 32-bit	| 16-bit	| 8-bit (low)
+-----------------------------------------
+rbx	    | ebx	    | bx	    | bl
+rcx	    | ecx	    | cx	    | cl
+rdx	    | edx	    | dx	    | dl
+rsi	    | esi	    | si	    | sil
+rdi	    | edi	    | di	    | dil
+
 Why size matters:
 
 When you move data, the source and destination sizes should match. If they do not match, the CPU may:

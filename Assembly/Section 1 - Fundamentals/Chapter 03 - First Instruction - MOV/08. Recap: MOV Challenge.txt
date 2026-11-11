@@ -1,1 +1,29 @@
+This challenge will test your understanding of:
 
+Loading values from memory
+Storing values to memory
+Copying between registers
+Using the correct register size
+The data addresses are already created for you. You only need to write the MOV instructions.
+
+Challenge
+
+Complete the following tasks in order. Write one line of assembly for each task.
+
+Data already provided:
+
+num1: contains the value 8 (1 byte)
+num2: contains the value 3 (1 byte)
+result: empty space (1 byte)
+Tasks:
+
+Load the value from num1 into al
+Load the value from num2 into bl
+Copy the value from bl into cl
+Store the value from al into result
+After your code:
+
+al should contain 8
+bl should contain 3
+cl should contain 3
+Memory at result should contain 8

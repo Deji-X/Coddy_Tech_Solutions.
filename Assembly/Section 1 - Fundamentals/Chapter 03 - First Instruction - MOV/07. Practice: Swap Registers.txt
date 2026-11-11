@@ -1,1 +1,36 @@
+Practice: Swap Registers
 
+
+
+Sometimes you need to swap the values between two registers. For example, if rax contains 5 and rbx contains 10, after swapping rax should be 10 and rbx should be 5.
+
+You cannot do this with one or two MOV instructions. You need a third register as temporary storage.
+
+Why you cannot do it directly:
+
+; This does NOT work
+mov rax, rbx   ; Now rax = 10, but the original 5 is gone forever
+mov rbx, rax   ; Now rbx also = 10 (not 5)
+The correct method: using a temporary register:
+
+mov rcx, rax   ; Step 1: Save original rax into rcx (rcx = 5)
+mov rax, rbx   ; Step 2: Copy rbx into rax (rax = 10)
+mov rbx, rcx   ; Step 3: Copy saved value from rcx into rbx (rbx = 5)
+Step by step:
+
+Step	| Instruction	      | rax	| rbx	| rcx
+-------------------------------------------
+Start	| (before any code)	| 5	  | 10	| ?
+1	    | mov rcx, rax	    | 5	  | 10	| 5
+2	    | mov rax, rbx	    | 10	| 10	| 5
+3	    | mov rbx, rcx	    | 10	| 5	  | 5
+
+After these three instructions, the values are swapped. The temporary register rcx still contains the original value (5), but that is fine.
+
+The temporary register can be any register you are not using:
+
+You can use rcx, rdx, r8, or any available register
+Just make sure you do not need the original value in that register
+Why this matters:
+
+Swapping values is a common operation in sorting algorithms and data manipulation. It teaches you to think carefully about the order of MOV instructions.

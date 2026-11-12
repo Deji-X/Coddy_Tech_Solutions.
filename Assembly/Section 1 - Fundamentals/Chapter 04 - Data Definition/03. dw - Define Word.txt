@@ -1,0 +1,49 @@
+db creates one byte of data.
+But sometimes you need to store larger numbers that do not fit in a single byte (0-255).
+For that, you use dw: Define Word.
+
+A word in x86 assembly is 2 bytes (16 bits).
+
+SYNTAX:
+
+label dw value
+label: the name you give to this memory address
+dw: Define Word directive
+value: the number to store (0 to 65,535)
+
+
+EXAMPLES:
+
+section .data
+    smallNum dw 1000       ; 2 bytes, value 1000
+    bigNum   dw 65535      ; 2 bytes, maximum value (all bits 1)
+    price    dw 499        ; 2 bytes, value 499
+
+
+WHAT YOU CAN STORE IN ONE WORD (2 BYTES):
+
+Type	                  | Range	      | Example
+-------------------------------------------------
+Small to medium number	| 0 to 65,535	| dw 32000
+Memory offset (16-bit)	| 0 to 65,535	| dw 0x7FFF
+
+MULTIPLE WORDS ON ONE LINE:
+section .data
+    values dw 100, 200, 300, 400    ; Creates 4 words (8 bytes total)
+How to use a word in your code:
+
+Since a word is 2 bytes, you use the 16-bit register ax (not al):
+
+section .data
+    myWord dw 1000
+
+section .text
+    mov ax, [myWord]    ; Load the value 1000 into ax
+    add ax, 500         ; ax becomes 1500
+    mov [myWord], ax    ; Store 1500 back into myWord
+Comparison: db vs dw
+
+Directive	| Size	| Range	  | Register to use
+---------------------------------------------
+db	| 1 byte	| 0 to 255	  | al
+dw	| 2 bytes	| 0 to 65,535	| ax

@@ -1,0 +1,55 @@
+db - DEFINE BYTE
+
+The most basic way to create data in memory is db: Define Byte.
+It creates one byte (8 bits) of data.
+
+Syntax:
+
+label db value
+label: the name you give to this memory address
+db: Define Byte directive
+value: the number or character to store (0 to 255)
+Examples:
+
+section .data
+    age db 25          ; Creates a byte called "age" containing 25
+    grade db 'A'       ; Creates a byte called "grade" containing 65 (ASCII for 'A')
+    zero db 0          ; Creates a byte called "zero" containing 0
+
+WHAT YOU CAN STORE IN ONE BYTE:
+
+Type	        | Range	      | Example
+-------------------------------------------------
+Small number	| 0 to 255	  | db 100
+Character	    | 'A' to 'z'	| db 'X'
+ASCII code	  | 0 to 255	  | db 65 (same as 'A')
+
+MULTIPLE BYTES ON ONE LINE:
+
+You can define several bytes in a row using commas:
+
+section .data
+    numbers db 5, 10, 15, 20    ; Creates 4 bytes: 5, 10, 15, 20
+    letters db 'A', 'B', 'C'    ; Creates 3 bytes: 65, 66, 67
+
+HOW TO USE A BYTE IN YOUR CODE:
+
+section .data
+    myByte db 42
+
+section .text
+    mov al, [myByte]    ; Load the value 42 into al
+    add al, 1           ; al becomes 43
+    mov [myByte], al    ; Store 43 back into myByte
+Important rule:
+
+Rule	                                            | Explanation
+----------------------------------------------------------------------------------------------
+Value must fit in 1 byte	                        | 0 to 255 (or a single character)
+Use an 8-bit register such as al to load or store	| al (like bl, cl, dl) is an 8-bit register
+
+COMMON MISTAKE:
+
+; Wrong: trying to store a number too large for a byte
+section .data
+    error db 300    ; 300 is too big (max 255)

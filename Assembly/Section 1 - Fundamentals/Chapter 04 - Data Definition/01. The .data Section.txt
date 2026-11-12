@@ -1,0 +1,48 @@
+The .data Section
+
+
+
+In Chapter 2, you loaded values from memory and stored values to memory. But where did that memory come from? Who created num1, num2, and result?
+
+The answer is the .data section. This is where you create your own data in memory.
+
+What is the .data section?
+
+The .data section is a part of your assembly program where you define data that will be stored in memory before your program runs.
+
+Syntax:
+
+section .data
+    ; Your data definitions go here
+Why you need it:
+
+Without .data section	With .data section
+You have no data to work with	You can create numbers, strings, and variables
+Memory addresses are unknown	You can use labels like myNumber or message
+You cannot test your code	You can load and store data you created
+A simple example:
+
+section .data
+    age db 25           ; Create a byte called "age" with value 25
+    price dw 1000       ; Create a word called "price" with value 1000
+    name db 'Bob'       ; Create a string called "name" with letters B, o, b
+Where it goes in your files:
+
+Remember the two-file pattern from Chapter 0:
+
+File	Content
+data.asm	section .data with your data definitions
+main.asm	%include "data.asm" followed by section .text with your code
+What happens when your program runs:
+
+The operating system loads your program into memory
+It reads the .data section and places your data at specific memory addresses
+Your labels (age, price, name) become addresses
+Your code can now access these addresses using [age], [price], [name]
+Important rules:
+
+Rule	Explanation
+Keep your data together	You could open section .data more than once (the assembler joins the pieces), but one section in data.asm is easier to read
+Labels must be unique	You cannot have two age labels
+Data is created before your code runs	It is ready to use when _start begins
+In the next lessons, you will learn how to define different types of data using db, dw, dd, and dq

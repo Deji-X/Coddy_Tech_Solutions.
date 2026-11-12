@@ -16,10 +16,12 @@ section .data
     ; Your data definitions go here
 Why you need it:
 
-Without .data section	With .data section
-You have no data to work with	You can create numbers, strings, and variables
-Memory addresses are unknown	You can use labels like myNumber or message
-You cannot test your code	You can load and store data you created
+Without .data section	        | With .data section
+--------------------------------------------------------------------------------
+You have no data to work with	| You can create numbers, strings, and variables
+Memory addresses are unknown	| You can use labels like myNumber or message
+You cannot test your code	    | You can load and store data you created
+
 A simple example:
 
 section .data
@@ -30,9 +32,11 @@ Where it goes in your files:
 
 Remember the two-file pattern from Chapter 0:
 
-File	Content
-data.asm	section .data with your data definitions
-main.asm	%include "data.asm" followed by section .text with your code
+File	    | Content
+--------------------------------------------------------------------------
+data.asm	| section .data with your data definitions
+main.asm	| %include "data.asm" followed by section .text with your code
+
 What happens when your program runs:
 
 The operating system loads your program into memory

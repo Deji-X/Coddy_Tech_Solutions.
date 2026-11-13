@@ -1,0 +1,43 @@
+dd creates 4 bytes of data. But sometimes you need even larger numbers or memory addresses. For that, you use dq: Define Quad Word.
+
+A quad word in x86 assembly is 8 bytes (64 bits).
+
+Syntax:
+
+label dq value
+Examples:
+
+section .data
+    myNumber dq 10000000000     ; 8 bytes, value 10 billion
+    bigNum   dq 123456789012    ; Very large number
+    address  dq msg             ; Memory address of label "msg"
+Comparison table:
+
+Directive	| Size	   | Range	            | Register to use
+------------------------------------------------------------
+db	      | 1 byte	 | 0 to 255	          | al
+dw	      | 2 bytes	 | 0 to 65,535	      | ax
+dd	      | 4 bytes	 | 0 to 4,294,967,295	|eax
+dq	      | 8 bytes  | Very large (2⁶⁴-1)	|rax
+
+How to use a quad word in your code:
+
+section .data
+    myNumber dq 5000000000
+
+section .text
+    mov rax, [myNumber]    ; Load value into rax
+    add rax, 1000000000    ; rax becomes 6 billion
+    mov [myNumber], rax    ; Store back
+Special use: storing addresses
+
+dq is also used to store memory addresses (pointers):
+
+section .data
+    message db 'Hello', 0
+    pointer dq message      ; Stores the address of message
+Important rule:
+
+Rule	                    | Explanation
+------------------------------------------------------
+Use rax to load or store	| rax is the 64-bit register

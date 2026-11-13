@@ -1,0 +1,39 @@
+dw creates 2 bytes of data. But sometimes you need even larger numbers. For that, you use dd: Define Double Word.
+
+A double word in x86 assembly is 4 bytes (32 bits).
+
+SYNTAX:
+
+label dd value
+
+Examples:
+
+section .data
+    myNumber dd 50000        ; 4 bytes, value 50000
+    bigNum   dd 4000000      ; 4 bytes, value 4 million
+    max32    dd 4294967295   ; Maximum 32-bit value
+
+COMPARISON TABLE:
+
+Directive	                    | Size	  | Range	              | Register to use
+-------------------------------------------------------------------------------
+db - DEFINE BYTE	            | 1 byte	| 0 to 255	          | al
+dw - DEFINE WORD	            | 2 bytes	| 0 to 65,535	        | ax
+dd - DEFINE DOUBLE WORD	      | 4 bytes	| 0 to 4,294,967,295	| eax
+
+
+HOW TO USE A DOUBLE WORD IN YOUR CODE:
+section .data
+    myNumber dd 50000
+
+section .text
+    mov eax, [myNumber]    ; Load value into eax
+    add eax, 10000         ; eax becomes 60000
+    mov [myNumber], eax    ; Store back
+
+
+IMPORTANT RULE:
+
+Rule	                    | Explanation
+------------------------------------------------------
+Use eax to load or store	| eax is the 32-bit register

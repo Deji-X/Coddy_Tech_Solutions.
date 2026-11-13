@@ -1,0 +1,49 @@
+Strings with db
+
+
+
+You already know that db defines a single byte. But db can also define a string: multiple bytes in a row.
+
+Syntax:
+
+label db 'text here'
+Example:
+
+section .data
+    message db 'Hello'
+This creates 5 bytes in memory: 'H', 'e', 'l', 'l', 'o'
+
+What happens in memory:
+
+Address	Byte	ASCII value
+message	'H'	72
+message+1	'e'	101
+message+2	'l'	108
+message+3	'l'	108
+message+4	'o'	111
+Adding a newline:
+
+To print a string and move to the next line, add 0x0a (newline character):
+
+section .data
+    message db 'Hello', 0x0a
+Now the string has 6 bytes: 'H','e','l','l','o', newline
+
+Multiple strings:
+
+section .data
+    hello db 'Hello', 0x0a
+    goodbye db 'Goodbye', 0x0a
+
+WHY THIS MATTERS:
+Why this matters:
+
+Strings are the most common data you will use in assembly.
+The write syscall (which you will learn in Chapter 5)
+prints strings by reading bytes from memory until it reaches the length you give it.
+
+IMPORTANT NOTE:
+
+Strings are just bytes. The CPU does not know or care that 'H' is a letter.
+It is just the number 72.
+The write syscall interprets those numbers as characters when printing.

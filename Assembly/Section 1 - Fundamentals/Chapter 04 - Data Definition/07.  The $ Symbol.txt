@@ -1,0 +1,36 @@
+The $ Symbol
+
+
+
+When you print a string using the write syscall (Chapter 5), you need to tell the CPU how many bytes to print.
+
+You could count the characters manually:
+
+message db 'Hello', 0x0a    ; 6 bytes (H e l l o newline)
+mov rdx, 6                  ; Manual count
+But manual counting is slow and error-prone. If you change the string, you must recount and update the number.
+
+The solution: automatic length calculation using $
+
+$ is the location counter. It represents the current memory address where the next byte will be placed.
+
+Example 1: Simple string
+
+section .data
+    message db 'Hello', 0x0a
+    msgLen equ $ - message
+How it works:
+
+message is the starting address (example: 1000)
+After storing 6 bytes, $ becomes 1006
+$ - message = 1006 − 1000 = 6 (the length)
+Note: equ stands for equate. It creates a constant: a name that represents a value.
+
+Example 2: Multiple strings
+
+section .data
+    first db 'Hi', 0x0a
+    len1 equ $ - first      ; len1 = 3 ('H','i', newline)
+    second db 'Hello', 0x0a
+    len2 equ $ - second     ; len2 = 6 ('H','e','l','l','o', newline)
+Each string has its own length calculated automatically. The $ resets for each calculation because it always refers to the current position right after each string.

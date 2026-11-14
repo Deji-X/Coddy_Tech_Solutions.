@@ -1,0 +1,58 @@
+You have learned several ways to define data in the .data section:
+
+Lesson	| What you learned
+----------------------------------------------------------------
+3.1	    | The .data section, where data goes
+3.2	    | db: Define Byte (1 byte)
+3.3	    | dw: Define Word (2 bytes)
+3.4	    | dd: Define Double Word (4 bytes)
+3.5	    | dq: Define Quad Word (8 bytes)
+3.6	    | Strings with db: creating text
+3.7	    | The $ symbol: calculating string lengths automatically
+
+Now it is time to put everything together and build a complete data.asm file.
+
+WHAT YOU WILL CREATE IN THIS CHALLENGE:
+
+A data.asm file that contains:
+
+  o  A string with automatic length calculation
+  o  A byte value
+  o  A word value
+  o  A double word value
+  o  A quad word value
+
+All properly organized in the .data section.
+
+EXAMPLE OF A COMPLETE data.asm:
+
+section .data
+    ; String with automatic length
+    msg db 'Hello', 0x0a
+    msgLen equ $ - msg
+    
+    ; Numbers of different sizes
+    smallNum db 100
+    mediumNum dw 5000
+    largeNum dd 100000
+    veryLarge dq 5000000000
+
+WHY THIS MATTERS:
+
+In the next chapters,
+you will use data.asm files like this to store the data your programs need.
+The main.asm file will include your data.asm and use the labels and
+lengths you have defined.
+
+CHALLENGE
+
+Create a complete data.asm file with the following:
+
+1. A string called welcome with the value 'Welcome!' followed by a newline (0x0a)
+2. A constant called welcomeLen that calculates the length automatically using $ - welcome
+3. A byte called score with the value 99
+4. A word called year with the value 2025
+5. A double word called population with the value 8500000
+6. A quad word called stars with the value 100000000000
+
+All inside the .data section.

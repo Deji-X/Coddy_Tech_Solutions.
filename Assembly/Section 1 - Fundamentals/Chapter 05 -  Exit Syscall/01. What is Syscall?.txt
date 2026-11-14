@@ -1,1 +1,51 @@
+What is Syscall?
 
+
+
+You have written assembly instructions like mov and lea. These instructions run directly on the CPU. But what if you need to do something the CPU cannot do by itself, like print to the screen, read from the keyboard, or exit a program?
+
+For these tasks, you need the operating system (Linux, in this course).
+
+What is a syscall?
+
+A syscall (system call) is a request from your program to the operating system. It is how you ask the OS to do something for you.
+
+Why you need syscalls:
+
+Task	Can the CPU do it alone?	Need syscall?
+Add two numbers	Yes	No
+Move data between registers	Yes	No
+Print text to screen	No	Yes
+Read keyboard input	No	Yes
+Exit a program	No	Yes
+Open a file	No	Yes
+How a syscall works:
+
+You put a syscall number in rax (tells the OS what you want)
+You put arguments in other registers (rdi, rsi, rdx, etc.)
+You execute the syscall instruction
+The CPU jumps into the OS kernel
+The OS performs the request
+The OS returns control to your program
+Analogy:
+
+Think of a syscall like calling a government office:
+
+Step	Analogy	In assembly
+1	Decide what service you need	Choose syscall number (put in rax)
+2	Fill out the forms	Put arguments in registers
+3	Submit the request	Execute syscall
+4	Government processes it	OS kernel does the work
+5	Get your result back	Program continues
+Syscalls you will learn in this course:
+
+Syscall	Number	What it does	Chapter
+exit	60	Ends the program	Chapter 4
+write	1	Prints text to screen	Chapter 5
+The most important syscall for now: exit
+
+Without exit, your program would keep running forever or crash. Every program you write must end with an exit syscall.
+
+mov rax, 60    ; syscall number for exit
+mov rdi, 0     ; exit code (0 = success)
+syscall        ; ask the OS to exit

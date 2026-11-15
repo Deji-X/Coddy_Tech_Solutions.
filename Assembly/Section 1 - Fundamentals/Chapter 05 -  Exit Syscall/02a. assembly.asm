@@ -13,3 +13,6 @@ _start:
     syscall
 
 ; TODO: Add the exit syscall with exit code 5
+    mov rax, 60
+    mov rsi, 0
+    syscall

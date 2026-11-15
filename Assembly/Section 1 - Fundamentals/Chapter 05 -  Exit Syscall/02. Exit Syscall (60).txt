@@ -43,8 +43,8 @@ This program does nothing visible. It just exits successfully. But it is a valid
 
 Let's mention what global _start and _start: are.
 
-Code	What it is	Why you need it
-global _start	Tells the linker where your program starts	Without it, the linker does not know which label is the entry point
+Code	        |What it is	                                |Why you need it
+global _start	|Tells the linker where your program starts	|Without it, the linker does not know which label is the entry point
 _start:	A label marking the beginning of your code	The CPU starts executing here
 You do not need to memorize the details. Just know that every main.asm must have these two lines before your code. You will use them in every program.
 

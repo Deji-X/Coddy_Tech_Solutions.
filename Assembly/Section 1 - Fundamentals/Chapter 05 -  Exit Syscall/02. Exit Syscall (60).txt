@@ -1,0 +1,55 @@
+Exit Syscall (60)
+
+
+
+The most important syscall for any program is exit. Without it, your program would keep running forever or crash when it reaches the end of memory.
+
+The exit syscall number is 60.
+
+Syntax:
+
+mov rax, 60    ; syscall number for exit
+mov rdi, 0     ; exit code (0 = success)
+syscall        ; ask the OS to exit
+What happens when you execute syscall with rax = 60:
+
+The CPU jumps into the Linux kernel
+The kernel sees: "exit syscall with code 0"
+The kernel terminates your program
+The kernel returns control to the shell or operating system
+Exit code 0 means success: the program completed without errors. Exit codes 1 through 255 indicate different errors. You can choose any number to signal what went wrong.
+
+Why exit codes matter:
+
+After your program exits, the shell (terminal) stores the exit code. You can check it with:
+
+./myprogram
+echo $?    ; Prints the exit code
+This is useful for:
+
+Scripts that check if a program succeeded
+Debugging (different codes for different errors)
+Chaining programs together
+A complete minimal program:
+
+section .text
+    global _start
+
+_start:
+    mov rax, 60    ; exit syscall
+    mov rdi, 0     ; exit code 0 (success)
+    syscall
+This program does nothing visible. It just exits successfully. But it is a valid, complete program.
+
+Let's mention what global _start and _start: are.
+
+Code	What it is	Why you need it
+global _start	Tells the linker where your program starts	Without it, the linker does not know which label is the entry point
+_start:	A label marking the beginning of your code	The CPU starts executing here
+You do not need to memorize the details. Just know that every main.asm must have these two lines before your code. You will use them in every program.
+
+What happens if you forget the exit syscall?
+
+If you do not include the exit syscall, the CPU will keep executing whatever garbage data happens to be in memory after your code. This usually causes a segmentation fault (crash) or completely unexpected behavior. Your program will not end cleanly.
+
+Always end your program with an exit syscall.

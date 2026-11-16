@@ -1,0 +1,33 @@
+Exit Codes
+
+
+
+When your program exits, it sends a small number back to the operating system. This number is called the exit code or exit status.
+
+Why exit codes matter:
+
+Scripts use exit codes to check if a program succeeded. For example, a backup script might only continue if the previous command succeeded.
+
+Exit codes also help with debugging. You can use different error codes for different problems.
+
+You can also chain programs together so one program runs only if the previous one succeeded. The shell checks the exit code before running the next command.
+
+The rules of exit codes:
+
+Exit code	Meaning
+0	Success: everything worked
+1-255	Something went wrong
+Choosing error codes:
+
+You can use any number from 1 to 255. What each number means is up to you as the programmer.
+
+Exit code	What you might mean
+1	General error
+2	Missing input file
+3	Permission denied
+4	Network error
+ 
+
+What happens if you do not set an exit code?
+
+You must always set rdi before the exit syscall. If you forget, rdi contains whatever garbage was left in the register, and your program will exit with a random code.

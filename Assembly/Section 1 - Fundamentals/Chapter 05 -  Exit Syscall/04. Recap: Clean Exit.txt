@@ -1,1 +1,25 @@
+Recap: Clean Exit
 
+
+You have learned about syscalls, the exit syscall, and exit codes. Now you will put everything together to write your first complete working program.
+
+A complete program needs:
+
+Component	What it does
+section .text	Where your code goes
+global _start	Tells the linker where the program starts
+_start:	The label where execution begins
+Exit syscall	Ends the program cleanly
+What makes a valid program:
+
+Your program must have all of the above. The exit syscall uses mov rax, 60, sets rdi to an exit code, and calls syscall.
+
+Why this matters:
+
+You have moved from writing individual instructions to writing complete programs. Every program you write from now on will follow this same structure.
+
+challenge icon
+Challenge
+
+Easy
+Write a complete assembly program that exits with exit code 0 (success). Use the standard structure: section .text, global _start, _start:, and the exit syscall.

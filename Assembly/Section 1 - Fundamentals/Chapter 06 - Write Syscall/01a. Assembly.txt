@@ -12,6 +12,7 @@ _start:
     mov rdi, 1
     mov rsi, msg
     mov rdx, msgLen
+    syscall
 
     ; Exit the program
     mov rax, 60

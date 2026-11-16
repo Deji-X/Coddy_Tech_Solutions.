@@ -6,28 +6,36 @@ In the previous lesson, you used mov rdi, 1 as part of the write syscall. That n
 
 A file descriptor is a number that tells the operating system where to send the data.
 
-The three standard file descriptors in Linux:
 
-File descriptor	Name	Where data goes
-0	stdin	Keyboard input (read data from user)
-1	stdout	Screen output (normal program output)
-2	stderr	Screen output (error messages)
-Why have two outputs for the screen?
+THE THREE STANDARD FILE DESCRIPTORS IN LINUX:
+
+File descriptor	| Name	  | Where data goes
+---------------------------------------------------------------
+0	              | stdin	  | Keyboard input (read data from user)
+1	              | stdout	| Screen output (normal program output)
+2	              | stderr	| Screen output (error messages)
+
+
+WHY HAVE TWO OUTPUTS FOR THE SCREEN?
 
 Normal output (stdout) and error output (stderr) go to the same screen, but they are treated separately. This allows you to:
 
-Redirect normal output to a file while still seeing errors on the screen
-Show errors even when normal output is hidden
-For printing in this course:
+  o  Redirect normal output to a file while still seeing errors on the screen
+  o  Show errors even when normal output is hidden
+
+FOR PRINTINTG IN THIS COURSE:
 
 You will always use file descriptor 1 (stdout) for printing messages. You do not need stderr yet.
 
-Example:
+EXAMPLE:
 
 mov rdi, 1      ; send output to stdout (the screen)
-What happens if you use the wrong file descriptor?
 
-If you use	Result
-0 (stdin)	The syscall fails if input comes from a pipe or a file. In a terminal the text usually still prints, but stdin is meant for input, not output
-2 (stderr)	Works like stdout (prints to screen), but is meant for errors
-Any other number	The kernel does not recognize it: the syscall fails
+
+WHAT HAPPENS IF YOU USE THE WRONG FILE DESCRIPTOR?
+
+If you use	      | Result
+-----------------------------------------------------------------------------------
+0 (stdin)	        | The syscall fails if input comes from a pipe or a file. In a terminal the text usually still prints, but stdin is meant for input, not output
+2 (stderr)	      | Works like stdout (prints to screen), but is meant for errors
+Any other number	| The kernel does not recognize it: the syscall fails

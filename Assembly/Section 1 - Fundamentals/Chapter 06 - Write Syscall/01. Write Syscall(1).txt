@@ -21,25 +21,30 @@ Argument	    | Register	| What it does	                | Example
 File descriptor	| rdi	    | Where to write (1 = screen)	| mov rdi, 1
 Buffer address	| rsi	    | Where the text is in memory	| mov rsi, message
 Byte count	    | rdx	    | How many bytes to print	    | mov rdx, 13
-The write syscall in action:
+
+
+THE WRITE SYSCALL IN ACTION:
 
 mov rax, 1      ; syscall number for write
 mov rdi, 1      ; file descriptor 1 = stdout (screen)
 mov rsi, msg    ; address of the string to print
 mov rdx, 13     ; number of bytes to print
 syscall         ; ask the OS to print
+
+
 To print a message on the screen, we need 5 lines. First, we put the syscall number 1 into rax for write. Then we put 1 into rdi to tell the OS to print to the screen.
 
 Next, we put the address of the string (msg) into rsi. After that, we put the number of bytes (13) into rdx. Finally, we execute syscall to ask the OS to print.
 
 What happens when you execute write:
 
-The CPU jumps into the Linux kernel
-The kernel sees: "write syscall"
-It reads rdi (where to write), rsi (where the text is), and rdx (how many bytes)
-It prints the text to the screen
-It returns control to your program
-Putting it together with a string:
+    1. The CPU jumps into the Linux kernel
+    2. The kernel sees: "write syscall"
+    3. It reads rdi (where to write), rsi (where the text is), and rdx (how many bytes)
+    4. It prints the text to the screen
+    5. It returns control to your program
+
+PUTTING IT TOGETHER WITH A STRING:
 
 section .data
     msg db 'Hello', 0x0a    ; string with newline
@@ -57,4 +62,5 @@ _start:
     mov rax, 60             ; exit syscall
     mov rdi, 0
     syscall
+
 This program prints Hello and then exits.

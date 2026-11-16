@@ -16,10 +16,11 @@ How write works:
 
 Unlike the exit syscall (which only needs one argument), write needs three arguments:
 
-Argument	Register	What it does	Example
-File descriptor	rdi	Where to write (1 = screen)	mov rdi, 1
-Buffer address	rsi	Where the text is in memory	mov rsi, message
-Byte count	rdx	How many bytes to print	mov rdx, 13
+Argument	    | Register	| What it does	                | Example
+------------------------------------------------------------------------------
+File descriptor	| rdi	    | Where to write (1 = screen)	| mov rdi, 1
+Buffer address	| rsi	    | Where the text is in memory	| mov rsi, message
+Byte count	    | rdx	    | How many bytes to print	    | mov rdx, 13
 The write syscall in action:
 
 mov rax, 1      ; syscall number for write

@@ -5,11 +5,13 @@ You have learned about syscalls, the exit syscall, and exit codes. Now you will 
 
 A complete program needs:
 
-Component	What it does
-section .text	Where your code goes
-global _start	Tells the linker where the program starts
-_start:	The label where execution begins
-Exit syscall	Ends the program cleanly
+Component	    | What it does
+-------------------------------------------------------------
+section .text	| Where your code goes
+global _start	| Tells the linker where the program starts
+_start:	      | The label where execution begins
+Exit syscall	| Ends the program cleanly
+
 What makes a valid program:
 
 Your program must have all of the above. The exit syscall uses mov rax, 60, sets rdi to an exit code, and calls syscall.

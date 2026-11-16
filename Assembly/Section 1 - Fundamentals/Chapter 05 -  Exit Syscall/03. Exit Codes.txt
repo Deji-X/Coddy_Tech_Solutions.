@@ -14,18 +14,21 @@ You can also chain programs together so one program runs only if the previous on
 
 The rules of exit codes:
 
-Exit code	Meaning
-0	Success: everything worked
-1-255	Something went wrong
+Exit code	| Meaning
+--------------------------------------
+0	        | Success: everything worked
+1-255	    | Something went wrong
+
 Choosing error codes:
 
 You can use any number from 1 to 255. What each number means is up to you as the programmer.
 
-Exit code	What you might mean
-1	General error
-2	Missing input file
-3	Permission denied
-4	Network error
+Exit code	| What you might mean
+-------------------------------
+1	        | General error
+2	        | Missing input file
+3	        | Permission denied
+4	        | Network error
  
 
 What happens if you do not set an exit code?

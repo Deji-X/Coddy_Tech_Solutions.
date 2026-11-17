@@ -1,0 +1,45 @@
+Buffer Address (rsi)
+
+
+
+In the write syscall, after telling the OS where to send the output (file descriptor in rdi), you need to tell it what to print. You do this by passing the address of the string in memory.
+
+The register for the buffer address is rsi.
+
+What is a buffer?
+
+A buffer is simply a block of memory that holds data. In our case, the buffer is the string we want to print.
+
+Why address, not the value itself?
+
+The write syscall needs to know where the string starts in memory. It will read bytes from that address until it reaches the length you specify in rdx. You do not send the actual characters to the syscall. You send their location.
+
+Example:
+
+section .data
+    msg db 'Hello', 0x0a
+
+section .text
+    mov rsi, msg        ; rsi holds the address of msg
+What msg really is:
+
+msg is a label. The assembler replaces it with a number: the memory address where the string 'Hello' is stored. When you write mov rsi, msg, you are putting that address number into rsi.
+
+What happens if you forget the address?
+
+If you do not set rsi, the register contains whatever garbage was there before. The OS tries to read the string from that address. If the address is not valid, the write syscall prints nothing, puts an error code in rax and your program continues with the next instruction. If the leftover value happens to be the address of readable memory, the syscall prints whatever bytes are stored there.
+
+Complete example with write syscall:
+
+section .data
+    msg db 'Hello', 0x0a
+    len equ $ - msg
+
+section .text
+    mov rax, 1          ; write syscall
+    mov rdi, 1          ; stdout
+    mov rsi, msg        ; address of string
+    mov rdx, len        ; number of bytes
+    syscall
+
+

@@ -39,3 +39,9 @@ If you use	      | Result
 0 (stdin)	        | The syscall fails if input comes from a pipe or a file. In a terminal the text usually still prints, but stdin is meant for input, not output
 2 (stderr)	      | Works like stdout (prints to screen), but is meant for errors
 Any other number	| The kernel does not recognize it: the syscall fails
+
+
+Challenge
+
+Easy
+You are given a string called message with the value 'OK' followed by a newline. Write the line of code that sets the file descriptor to print to the screen (stdout). Only write the mov instruction for rdi.

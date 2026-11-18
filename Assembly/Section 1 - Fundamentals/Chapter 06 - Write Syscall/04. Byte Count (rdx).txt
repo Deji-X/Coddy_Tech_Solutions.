@@ -1,0 +1,47 @@
+Byte Count (rdx)
+
+
+
+You have told the OS where to print (rdi) and what to print (rsi). Now you need to tell it how many bytes to print.
+
+The register for byte count is rdx.
+
+Why does the OS need the length?
+
+The OS does not know where your string ends. Without a length, it would keep reading memory forever. The length tells the OS exactly when to stop.
+
+Example:
+
+section .data
+    msg db 'Hello', 0x0a
+    msgLen equ $ - msg
+
+section .text
+    mov rdx, msgLen      ; rdx = number of bytes to print
+What happens if the length is wrong?
+
+If you set	Result
+Too short	Only part of the string prints
+Too long	The OS keeps reading past your string into garbage memory: may print random characters or crash
+Zero	Nothing prints
+Calculating length automatically:
+
+You already learned the $ - label pattern in Chapter 3:
+
+section .data
+    msg db 'Hello', 0x0a
+    msgLen equ $ - msg    ; msgLen = 6 (Hello + newline)
+This ensures the length is always correct, even if you change the string.
+
+Complete example:
+
+section .data
+    msg db 'Hello', 0x0a
+    msgLen equ $ - msg
+
+section .text
+    mov rax, 1           ; write syscall
+    mov rdi, 1           ; stdout
+    mov rsi, msg         ; address of string
+    mov rdx, msgLen      ; number of bytes
+    syscall

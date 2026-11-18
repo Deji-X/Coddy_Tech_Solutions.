@@ -20,11 +20,14 @@ section .text
     mov rdx, msgLen      ; rdx = number of bytes to print
 What happens if the length is wrong?
 
-If you set	Result
-Too short	Only part of the string prints
-Too long	The OS keeps reading past your string into garbage memory: may print random characters or crash
-Zero	Nothing prints
-Calculating length automatically:
+If you set	| Result
+---------------------------------------------------------------------------------
+Too short	| Only part of the string prints
+Too long	| The OS keeps reading past your string into garbage memory: may print random characters or crash
+Zero	    | Nothing prints
+
+
+CALCULATING LENGTH AUTOMATICALLY:
 
 You already learned the $ - label pattern in Chapter 3:
 

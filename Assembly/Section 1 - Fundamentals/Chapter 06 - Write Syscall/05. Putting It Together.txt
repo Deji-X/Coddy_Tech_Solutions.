@@ -4,21 +4,26 @@ Putting It Together
 
 You have learned all four pieces of the write syscall:
 
-Register	What it holds	Value for screen output
-rax	Syscall number	1 (write)
-rdi	File descriptor	1 (stdout)
-rsi	Buffer address	Address of your string
-rdx	Byte count	Length of your string
+Register	| What it holds	    | Value for screen output
+---------------------------------------------------------
+rax	        | Syscall number    | 1 (write)
+rdi	        | File descriptor	| 1 (stdout)
+rsi	        | Buffer address    | Address of your string
+rdx	        | Byte count	    | Length of your string
+
 Now it is time to put them all together.
 
-The complete write syscall pattern:
+
+THE COMPLETE WRITE SYSCALL PATTERN:
 
 mov rax, 1          ; syscall number for write
 mov rdi, 1          ; file descriptor (stdout)
 mov rsi, msg        ; address of the string
 mov rdx, msgLen     ; number of bytes to print
 syscall             ; ask the OS to print
-A complete working program:
+
+
+A COMPLETE WORKING PROGRAM:
 
 section .data
     msg db 'Hello, World!', 0x0a
@@ -37,6 +42,7 @@ _start:
     mov rax, 60
     mov rdi, 0
     syscall
+
 What this program does:
 
 Step	What happens

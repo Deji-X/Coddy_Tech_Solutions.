@@ -45,10 +45,13 @@ _start:
 
 What this program does:
 
-Step	What happens
-1	Prints "Hello, World!" to the screen
-2	Moves to a new line
-3	Exits cleanly with code 0
-The order matters:
+Step	|What happens
+---------------------------------------------
+1	    |Prints "Hello, World!" to the screen
+2	    |Moves to a new line
+3	    |Exits cleanly with code 0
+
+
+THE ORDER MATTERS:
 
 You must set up the registers before executing syscall. The order of the mov instructions does not matter as long as all four are set before syscall.

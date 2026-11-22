@@ -5,4 +5,7 @@ extern values
 solve:
     ; Write your instructions here.
     mov rax, 0
+    add rax, r8
+    add rax, r9
+    sub rax, r10
     ret

@@ -1,0 +1,3 @@
+Shelf labels run from r8 through r9, including both endpoints.
+Compute how many labels there are, using subtraction and inc.
+Inputs satisfy 0 <= first <= last <= 1000.

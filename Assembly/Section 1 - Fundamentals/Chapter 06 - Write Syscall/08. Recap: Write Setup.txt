@@ -1,0 +1,14 @@
+
+Write a complete program that prints:
+
+Start
+
+Middle
+
+End
+
+Each word on its own line. Use three separate strings and three write syscalls.
+
+The exit syscall must be included.
+
+

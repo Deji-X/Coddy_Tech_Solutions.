@@ -1,0 +1,6 @@
+Create a main.asm file that:
+
+Includes data.asm using %include
+Has the .text section and global _start
+Uses the write syscall to print the message
+Uses the exit syscall to exit cleanly with code 0

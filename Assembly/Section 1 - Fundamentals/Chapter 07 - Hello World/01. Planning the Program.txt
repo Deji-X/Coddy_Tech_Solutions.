@@ -1,0 +1,16 @@
+Planning the Program
+
+
+
+You have learned all the pieces: data definition, MOV instructions, exit syscall, and write syscall. Now it is time to put everything together to write a complete "Hello, World!" program from scratch.
+
+Before writing any code, you need a plan.
+
+The four steps to print "Hello, World!":
+
+Step	What to do	Which chapter taught this
+1	Create the .data section with the string	Chapter 3
+2	Calculate the string length automatically	Chapter 3
+3	Set up and call the write syscall	Chapter 5
+4	Set up and call the exit syscall	Chapter 4
+In the next lessons, you will write each part step by step, then put them all together.

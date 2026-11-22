@@ -1,0 +1,10 @@
+add destination, source increases the destination. sub destination, source subtracts the source from it. Neither changes a register used only as the source. Small signed results in this section fit in 64 bits.
+
+mov rax, 17
+add rax, 8
+sub rax, 4
+The running value is 17, then 25, then 21.
+
+Keep a running total in the destination; operand order matters for sub.
+
+These are instruction excerpts. From here on you edit only solution.asm: a locked main.asm reads the inputs and calls your solve routine. The supplied solve: label begins your calculation, and the supplied ret returns to the harness that prints rax. Input parsing and number printing are provided so you can focus on this lesson.

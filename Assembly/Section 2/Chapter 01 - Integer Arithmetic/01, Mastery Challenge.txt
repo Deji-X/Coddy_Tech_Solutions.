@@ -1,0 +1,3 @@
+A wallet starts with r8, receives r9, pays r10, and pays a second bill of r11.
+Compute the final balance; it can be negative.
+Each input is between 0 and 1000.

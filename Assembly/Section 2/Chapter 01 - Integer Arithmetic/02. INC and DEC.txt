@@ -1,0 +1,18 @@
+INC and DEC
+
+
+
+inc adds one and dec subtracts one. They are useful for counters and inclusive endpoints.
+Unlike add and sub, they leave the carry flag unchanged;
+other arithmetic status flags can change.
+
+mov rax, 6
+inc rax
+dec rax
+inc rax
+Two increments and one decrement change 6 to 7.
+
+Use inc or dec for a change of exactly one.
+
+Use these instruction excerpts inside the supplied solve routine;
+the challenge provides the input and output code

@@ -1,0 +1,12 @@
+Create a data.asm file for a program that prints Hello, World! followed by a newline.
+You need:
+
+A .data section
+A string with label msg containing Hello, World! and a newline (0x0a)
+A constant called msgLen that calculates the length automatically using $ - msg
+Why this goes in a separate file:
+
+Remember the two-file pattern from Chapter 0:
+
+data.asm holds all data definitions
+main.asm will include this file with %include "data.asm"(we'll cover this in the next lesson)

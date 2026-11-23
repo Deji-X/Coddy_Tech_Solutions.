@@ -1,0 +1,4 @@
+A rectangular tray has width r8 and height r9.
+There are r10 trays.
+Compute their combined area.
+Inputs are between 0 and 30.

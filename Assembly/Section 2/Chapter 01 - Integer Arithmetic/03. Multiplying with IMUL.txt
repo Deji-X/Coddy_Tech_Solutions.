@@ -1,0 +1,13 @@
+The two-operand form imul destination,
+source multiplies signed integers and keeps the result in the destination.
+We use small products that fit in 64 bits. This form does not put a second result in rdx.
+
+mov rax, -4
+mov rbx, 6
+imul rax, rbx
+A negative number times a positive number is negative: -4 * 6 = -24.
+
+For two-operand imul, the destination receives the product.
+
+Use these instruction excerpts inside the supplied solve routine;
+the challenge provides the input and output code.

@@ -1,0 +1,2 @@
+Pack r8 items into boxes of capacity r9. Compute the number of leftover items.
+The first input is between 0 and 1000; capacity is between 1 and 100.

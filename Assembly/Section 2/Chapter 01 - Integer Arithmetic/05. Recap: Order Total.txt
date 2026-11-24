@@ -1,0 +1,3 @@
+An order has r8 packs, r9 items per pack and r10 extra items. r11 items are returned.
+Compute the net item count.
+Inputs are between 0 and 100 and returns never exceed the order.

@@ -1,1 +1,14 @@
+CMP and the Zero Flag
 
+
+
+cmp left, right sets status flags as if it subtracted the right operand from the left, but stores no numeric result. The zero flag is set when the operands are equal. A later conditional jump reads those flags.
+
+mov rax, 12
+mov rbx, 12
+cmp rax, rbx
+The operands are equal, so the zero flag is set. cmp leaves rax at 12.
+
+cmp changes flags and leaves its operands unchanged.
+
+Use these instruction excerpts inside the supplied solve routine; the challenge provides the input and output code.

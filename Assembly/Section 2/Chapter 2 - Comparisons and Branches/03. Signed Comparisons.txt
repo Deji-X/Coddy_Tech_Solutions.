@@ -1,0 +1,17 @@
+Signed branches interpret the same bits as signed integers.
+After cmp a, b, use jl for a < b, jg for a > b, jle for a <= b, or jge for a >= b.
+They account for both sign and overflow flags.
+
+mov rax, 0
+mov rbx, -3
+cmp rbx, 2
+jge .done
+mov rax, 1
+.done:
+
+Signed -3 is less than 2, so the jge branch is not taken.
+
+Use jl, jg, jle, or jge for signed order comparisons.
+
+Use these instruction excerpts inside the supplied solve routine;
+the challenge provides the input and output code.

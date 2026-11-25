@@ -1,0 +1,3 @@
+Add signed inputs r8 and r9, then compare their sum with target r10.
+Leave the comparison flags unchanged until the supplied ret.
+All inputs are between -100 and 100.

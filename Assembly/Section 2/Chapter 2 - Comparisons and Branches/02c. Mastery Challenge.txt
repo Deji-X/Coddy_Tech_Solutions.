@@ -1,0 +1,2 @@
+Return 10 when both input codes are equal and 20 when they differ.
+Inputs r8 and r9 are between 0 and 99.

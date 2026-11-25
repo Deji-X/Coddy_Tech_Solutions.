@@ -5,4 +5,9 @@ extern values
 solve:
 ; Write your comparison here.
 mov rax, 0
+mov rax, r8
+mov rbx, r9
+mov rcx, r10
+add rax, rbx
+cmp rax, rcx
 ret

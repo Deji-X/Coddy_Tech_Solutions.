@@ -2,7 +2,9 @@ Counted Loops
 
 
 
-A loop repeats a block by jumping backward to a label. Keep a counter, test it before entering, and move it toward a stopping value. Testing first allows a zero count to run the body zero times.
+A loop repeats a block by jumping backward to a label.
+Keep a counter, test it before entering, and move it toward a stopping value.
+Testing first allows a zero count to run the body zero times.
 
 mov rax, 0
 mov rcx, 3
@@ -13,8 +15,10 @@ add rax, 2
 dec rcx
 jmp .loop
 .done:
+
 Three iterations add 2 three times. At zero, the loop exits before the next addition.
 
 A counted loop needs initialization, a stopping test and a counter update.
 
-Use these instruction excerpts inside the supplied solve routine; the challenge provides the input and output code.
+Use these instruction excerpts inside the supplied solve routine;
+the challenge provides the input and output code.

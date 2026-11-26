@@ -1,0 +1,2 @@
+Compute the absolute distance between signed inputs r8 and r9: larger minus smaller.
+Each is between -100 and 100.

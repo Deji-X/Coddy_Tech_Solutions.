@@ -1,1 +1,3 @@
-A signed temperature arrives in r8, between -50 and 100. Return 0 below zero, 1 from zero through 30, and 2 above 30.
+A signed temperature arrives in r8, between -50 and 100.
+Return 0 below zero, 1 from zero through 30, and 2 above 30.
+

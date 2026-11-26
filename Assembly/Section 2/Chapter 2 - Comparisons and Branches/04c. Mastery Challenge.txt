@@ -1,0 +1,3 @@
+For unsigned inputs r8 and r9, return 0 when equal, 1 when the first is smaller,
+and 2 when the first is larger. 
+Inputs are between 0 and 10000.
